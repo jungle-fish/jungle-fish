@@ -1,26 +1,123 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f5f0;
+  --foreground: #1a2e1f;
+  --jungle-950: #0d1f14;
+  --jungle-900: #1b4332;
+  --jungle-800: #2d6a4f;
+  --jungle-700: #40916c;
+  --jungle-600: #52b788;
+  --jungle-500: #74c69d;
+  --jungle-400: #95d5b2;
+  --jungle-300: #b7e4c7;
+  --jungle-200: #d8f3dc;
+  --jungle-100: #edf7ef;
+  --lagoon-700: #0077b6;
+  --lagoon-500: #0096c7;
+  --lagoon-300: #48cae4;
+  --lagoon-100: #caf0f8;
+  --sand-200: #faedcd;
+  --sand-100: #fefae0;
+  --earth-600: #6b4423;
+  --coral-500: #e07a5f;
+  --cream: #fdfbf7;
+  --muted: #5c6b5f;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-jungle-950: var(--jungle-950);
+  --color-jungle-900: var(--jungle-900);
+  --color-jungle-800: var(--jungle-800);
+  --color-jungle-700: var(--jungle-700);
+  --color-jungle-600: var(--jungle-600);
+  --color-jungle-500: var(--jungle-500);
+  --color-jungle-400: var(--jungle-400);
+  --color-jungle-300: var(--jungle-300);
+  --color-jungle-200: var(--jungle-200);
+  --color-jungle-100: var(--jungle-100);
+  --color-lagoon-700: var(--lagoon-700);
+  --color-lagoon-500: var(--lagoon-500);
+  --color-lagoon-300: var(--lagoon-300);
+  --color-lagoon-100: var(--lagoon-100);
+  --color-sand-200: var(--sand-200);
+  --color-sand-100: var(--sand-100);
+  --color-earth-600: var(--earth-600);
+  --color-coral-500: var(--coral-500);
+  --color-cream: var(--cream);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-outfit);
+  --font-display: var(--font-fraunces);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-outfit), system-ui, sans-serif;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--jungle-400) 45%, transparent);
+  color: var(--jungle-950);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.hero-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--jungle-900) 0%,
+    var(--jungle-800) 35%,
+    var(--lagoon-700) 100%
+  );
+  background-size: 200% 200%;
+  animation: shimmer 18s ease infinite;
+}
+
+/* JFish section: inverted vignette over background video */
+.jfish-video-overlay {
+  background-color: rgb(27 67 50 / 0.28);
+  background-image: radial-gradient(
+    ellipse 90% 90% at 50% 50%,
+    rgb(13 31 20 / 0.5) 30%,
+    rgba(22, 71, 51, 0.5) 100%
+  );
+}
+
+@media (min-width: 768px) {
+  .jfish-video-overlay {
+    background-image: radial-gradient(
+      ellipse 90% 90% at 50% 50%,
+      rgb(13 31 20 / 0.5) 30%,
+      rgba(22, 71, 51, 0.5) 100%
+    );
+  }
 }

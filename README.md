@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jungle Fish — Landing Page
 
-## Getting Started
+Marketing website for [Jungle Fish](https://github.com), an eco-sanctuary in Costa Rica combining sustainable tourism, permaculture, aquaculture, and the $JFISH token ecosystem.
 
-First, run the development server:
+Single-page landing site with English/Spanish support, scroll animations, and sections for experiences, payments, Stronghold integration, volunteering, and contact.
+
+## Tech stack
+
+- **Next.js 16** (App Router)
+- **React 19** + **TypeScript**
+- **Tailwind CSS 4**
+- **Framer Motion**
+- **pnpm**
+
+## Getting started
+
+**Requirements:** Node.js 20+, pnpm
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command        | Description              |
+| -------------- | ------------------------ |
+| `pnpm dev`     | Start development server |
+| `pnpm build`   | Production build         |
+| `pnpm start`   | Run production build     |
+| `pnpm lint`    | Run ESLint               |
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/                    # Next.js app shell (layout, page, globals)
+components/
+  landing/              # Page sections (Hero, About, JFish, etc.)
+  layout/               # Header, Footer, Section, Container
+  motion/               # Animations (FadeIn, SectionReveal, …)
+  ui/                   # Button, Card, CTA
+lib/
+  contact.ts            # Email, phone, social URLs
+  i18n/                 # EN/ES translations
+  volunteer/            # Volunteer form helpers
+public/                 # Icons, images, static assets
+docs/                   # Business & content reference (not served)
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Landing sections
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Hero — video background, primary CTAs  
+2. About — ecosystem overview  
+3. Experiences — services & benefits  
+4. $JFISH — token info & rewards  
+5. Payments — cash, card, USDC, $JFISH  
+6. Stronghold — payment infrastructure & workshops  
+7. Gallery — photo placeholders  
+8. Visit — contact & location  
+9. Volunteer — application form (mailto)
 
-## Deploy on Vercel
+## Configuration
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Contact & social links** — edit `lib/contact.ts`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Copy (EN/ES)** — edit `lib/i18n/translations/en.ts` and `es.ts`.
+
+**Remote images** — allowed hostnames are listed in `next.config.ts`.
+
+No environment variables are required for the current build.
+
+## Deployment
+
+### Development / preview (Vercel)
+
+1. Push the repository to GitHub.
+2. Import the project in [Vercel](https://vercel.com/new).
+3. Use defaults: Framework **Next.js**, build command **`pnpm run build`**.
+4. Deploy — Vercel provides a preview URL (e.g. `*.vercel.app`).
+
+Preview deployments run automatically on pull requests when connected to GitHub.
+
+### Production (GoDaddy)
+
+Standard GoDaddy shared hosting does **not** run Next.js server-side out of the box. Options for production:
+
+- **Static export** — add `output: 'export'` to `next.config.ts` and upload the `out/` folder to GoDaddy.
+- **VPS / Node hosting** — run `pnpm build` then `pnpm start` on a server with Node.js.
+- **DNS only** — host on Vercel (or similar) and point the GoDaddy domain via DNS.
+
+Choose based on whether you need SSR/API routes (this project currently does not).
+
+## Documentation
+
+Content and strategy notes live in `docs/`:
+
+- `business.md` — project overview  
+- `landing.md` — section content reference  
+- `jungle-fish-volunteering-information.md` — volunteering program  
+- `how-jungle-flish-works-with-stronghold.md` — Stronghold integration  
+
+## License
+
+Private — all rights reserved.
