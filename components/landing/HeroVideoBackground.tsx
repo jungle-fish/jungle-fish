@@ -10,9 +10,9 @@ import { YouTubeBackgroundVideo } from "@/components/landing/YouTubeBackgroundVi
 import { shouldUseHeroBackgroundVideo } from "@/lib/video/youtube-background";
 import { useHeroIntro } from "@/components/landing/HeroIntroContext";
 
-const VIDEO_LOAD_TIMEOUT_MS = 10_000;
-const MIN_BRAND_IDLE_MS = 900;
-const CROSSFADE_MS = 800;
+const VIDEO_LOAD_TIMEOUT_MS = 8_000;
+const MIN_BRAND_IDLE_MS = 350;
+const CROSSFADE_MS = 450;
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -84,7 +84,7 @@ export function HeroVideoBackground({ y, scale }: HeroVideoBackgroundProps) {
         scale: [1, 1.07, 0.97, 1],
         opacity: 0,
         x: "-60vw",
-        transition: { duration: 0.9, ease: "easeInOut" },
+        transition: { duration: 0.65, ease: "easeInOut" },
       });
 
       setBrandPhaseSafe("done");
@@ -137,7 +137,7 @@ export function HeroVideoBackground({ y, scale }: HeroVideoBackgroundProps) {
       await brandControls.start({
         x: 0,
         opacity: 1,
-        transition: { duration: 0.9, ease: "easeInOut" },
+        transition: { duration: 0.55, ease: "easeInOut" },
       });
 
       if (cancelled) return;

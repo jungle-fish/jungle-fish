@@ -6,7 +6,6 @@ const en = {
   },
   nav: {
     about: "About",
-    experiences: "Experiences",
     jfish: "$JFISH",
     payments: "Payments",
     stronghold: "Stronghold",
@@ -38,95 +37,65 @@ const en = {
         description:
           "Fresh tilapia and aquatic species cultivated in controlled, sustainable environments.",
       },
-      experiences: {
-        title: "Experiences",
-        description:
-          "Boat rides, outdoor activities and educational moments that bring you closer to nature.",
-      },
-      nature: {
-        title: "Nature",
-        description:
-          "Lush jungle surroundings, water, wildlife and open air — the heart of everything we do.",
-      },
       accommodation: {
         title: "Accommodation",
         description:
           "Cabins and relaxation spaces to unwind, breathe and stay immersed in the environment.",
       },
       book: {
-        title: "The 7 Books of Jungle Fish",
+        title: "The Seven Books of Jungle Fish",
         description:
           "A comprehensive guide to reconnecting with nature's rhythms through regenerative design, medicinal plants and the art of closed-loop tropical living.",
       },
-    },
-  },
-  experiences: {
-    eyebrow: "Experiences & services",
-    title: "What awaits you",
-    description:
-      "From fresh food to open-water adventures — every service is designed to feel natural, memorable and restorative.",
-    items: {
-      food: {
-        title: "Fresh food",
-        description: "Tilapia and local produce served straight from our sustainable systems.",
-      },
-      boat: {
-        title: "Boat experiences",
-        description: "Glide across the water and explore the landscape from a new perspective.",
-      },
-      outdoor: {
-        title: "Outdoor activities",
-        description: "Trails, recreation and open-air moments for every kind of explorer.",
-      },
-      cabins: {
-        title: "Cabins & rest",
-        description: "Comfortable spaces to slow down and absorb the surroundings.",
+      freshFood: {
+        title: "Fresh Food",
+        description:
+          "Tilapia and local produce served straight from our sustainable systems.",
       },
       education: {
-        title: "Educational visits",
-        description: "Learn about sustainability, ecology and living in balance with nature.",
-      },
-      relaxation: {
-        title: "Relaxation",
-        description: "Quiet corners, fresh air and the gentle rhythm of the jungle.",
+        title: "Educational Visits",
+        description:
+          "Learn about sustainability, ecology and living in balance with nature.",
       },
     },
-    benefitsTitle: "Why visit",
-    benefits: [
-      "Direct connection with nature",
-      "Sustainable and organic approach",
-      "Activities for families and adventurers",
-      "Fresh, locally sourced food",
-      "A peaceful escape from the everyday",
-    ],
   },
   jfish: {
-    eyebrow: "Native token",
-    title: "Meet $JFISH",
+    eyebrow: "Meet $JFISH",
+    title: "Stellar Network News",
     description:
-      "$JFISH is the native token of the Jungle Fish ecosystem — a simple way to pay, earn rewards and unlock experiences on-site.",
-    usesTitle: "What you can use it for",
+      "$JFISH is our newly developed native token on the Stellar network. It is a way for people to invest, engage, and unlock the experiences of the rainforest jungle while creating and growing the potential of our communities and planet.",
+    usesTitle: "How to use $JFISH through Stellar",
     uses: [
-      "Pay for food and fresh products",
-      "Access boat rides and activities",
-      "Redeem benefits and on-site rewards",
-      "Enjoy discounts and exclusive perks",
+      "Purchase any commodity, product, and currency in the world directly on the Stellar network.",
+      "Connect and secure every part of your financial system through a stronghold.",
+      "Transactions happen in seconds via Stellar, while stronghold ensures everything is securely accounted for.",
+      "Scan QR codes to gain full control and make purchases in seconds.",
     ],
+    closingText:
+      "Stellar Network News: your place to learn how to purchase, invest, and engage with the network.",
+    xCta: "Follow on X",
     howTitle: "How it works",
     howDescription:
-      "Use $JFISH alongside cash and card at Jungle Fish. As the ecosystem grows, more experiences and rewards will become available — always rooted in the place itself, not abstract finance.",
-    examplesTitle: "Example rewards",
-    examples: [
-      { label: "Tilapia dish", value: "Redeem with $JFISH" },
-      { label: "Boat ride", value: "Activity access" },
-      { label: "Member perks", value: "Coming soon" },
-    ],
-    badge: "In development",
-    xCta: "Follow on X",
+      "Stellar is a non-profit, decentralized network designed to be accessible to everyone. Whether you want to learn more about the network, engage with smart contracts, or explore a fundamentally easy ecosystem, it is designed for anyone from ages 3 to 100 to enjoy.",
+    interestTitle: "Interested in Stellar?",
+    contactLabel: "Contact us",
+    emailSubject: "Stellar inquiry — Jungle Fish",
+    emailBodyIntro: "New Stellar / $JFISH inquiry:",
+    successMessage:
+      "Thank you! Your email app should open with your message ready to send. If it didn't open, write us directly at the contact email on this page.",
+    form: {
+      name: "Name",
+      namePlaceholder: "Your name",
+      email: "Email",
+      emailPlaceholder: "you@example.com",
+      message: "Message",
+      messagePlaceholder: "Let us a message.",
+      submit: "Submit",
+    },
   },
   payments: {
     eyebrow: "Payment methods",
-    title: "Pay your way",
+    title: "Pay in seconds",
     description:
       "We accept traditional and digital payments so your visit stays seamless — whether you prefer cash, card or crypto.",
     methods: {

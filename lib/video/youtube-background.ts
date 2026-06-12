@@ -9,6 +9,7 @@ export function buildYouTubeBackgroundEmbedUrl(
     mute: "1",
     loop: "1",
     controls: "0",
+    autohide: "1",
     playsinline: "1",
     rel: "0",
     modestbranding: "1",
@@ -18,13 +19,15 @@ export function buildYouTubeBackgroundEmbedUrl(
     disablekb: "1",
     fs: "0",
     enablejsapi: "1",
+    showinfo: "0",
   });
 
   if (origin) {
     params.set("origin", origin);
+    params.set("widget_referrer", origin);
   }
 
-  return `https://www.youtube.com/embed/${videoId}?${params.toString()}`;
+  return `https://www.youtube-nocookie.com/embed/${videoId}?${params.toString()}`;
 }
 
 function isReducedMotionPreferred() {

@@ -3,7 +3,7 @@
 import { motion, useReducedMotion, type Transition } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-export type SectionRevealVariant = "fromLeft" | "fromRight" | "bounce";
+export type SectionRevealVariant = "fromLeft" | "fromRight" | "bounce" | "fadeUp";
 
 type SectionRevealConfig = {
   initial: { opacity: number; x?: number; y?: number; scale?: number };
@@ -15,12 +15,17 @@ const REVEAL_CONFIG: Record<SectionRevealVariant, SectionRevealConfig> = {
   fromLeft: {
     initial: { opacity: 0, x: -80 },
     animate: { opacity: 1, x: 0 },
-    transition: { duration: 1.5, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
   },
   fromRight: {
     initial: { opacity: 0, x: 80 },
     animate: { opacity: 1, x: 0 },
-    transition: { duration: 1.5, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
+  },
+  fadeUp: {
+    initial: { opacity: 0, y: 48 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
   },
   bounce: {
     initial: { opacity: 0, y: 56, scale: 0.94 },

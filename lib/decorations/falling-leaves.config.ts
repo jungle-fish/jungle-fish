@@ -24,6 +24,6 @@ export type FallingLeavesOptions = {
 
 export const FALLING_LEAVES_DEFAULTS = {
   side: "both" as FallingLeavesSide,
-  countPerSide: 15,
+  countPerSide: 9,
   laneClassName: "w-[clamp(440px,18vw,660px)]",
 } as const;

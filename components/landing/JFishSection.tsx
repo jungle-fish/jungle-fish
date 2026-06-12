@@ -1,14 +1,17 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { useScroll, useTransform } from "framer-motion";
-import { TokenIcon } from "@/components/icons";
 import { Container } from "@/components/layout/Container";
 import { FadeIn } from "@/components/motion/FadeIn";
+import { SectionHeader } from "@/components/motion/SectionHeader";
 import { YouTubeBackgroundVideo } from "@/components/landing/YouTubeBackgroundVideo";
 import { Button } from "@/components/ui/Button";
 import { contact } from "@/lib/contact";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
+
+const inputClassName =
+  "w-full rounded-xl border border-jungle-600/50 bg-jungle-950/40 px-4 py-3 text-sm text-jungle-100 outline-none transition-colors placeholder:text-jungle-400/60 focus:border-lagoon-400 focus:ring-2 focus:ring-lagoon-400/20 sm:text-base";
 
 function JFishVideoOverlay() {
   return (
@@ -21,6 +24,7 @@ function JFishVideoOverlay() {
 
 export function JFishSection() {
   const { t } = useLanguage();
+  const [submitted, setSubmitted] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -28,15 +32,32 @@ export function JFishSection() {
     offset: ["start end", "end start"],
   });
 
-  /** Subtle vertical drift — slower than page scroll */
-  const parallaxY = useTransform(scrollYProgress, [0, 1], ["-75%", "75%"]);
+  const parallaxY = useTransform(scrollYProgress, [0, 1], ["-30%", "30%"]);
 
-  /** Max zoom when section center aligns with viewport center */
-  const parallaxScale = useTransform(
-    scrollYProgress,
-    [0, 0.5, 1],
-    [1, 1.5, 1],
-  );
+  function handleContactSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+
+    const name = String(data.get("name") ?? "").trim();
+    const email = String(data.get("email") ?? "").trim();
+    const message = String(data.get("message") ?? "").trim();
+
+    const body = [
+      t.jfish.emailBodyIntro,
+      "",
+      `${t.jfish.form.name}: ${name}`,
+      `${t.jfish.form.email}: ${email}`,
+      "",
+      `${t.jfish.form.message}:`,
+      message,
+    ].join("\n");
+
+    const mailto = `mailto:${contact.email}?subject=${encodeURIComponent(t.jfish.emailSubject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+    setSubmitted(true);
+    form.reset();
+  }
 
   return (
     <section
@@ -47,32 +68,23 @@ export function JFishSection() {
       <YouTubeBackgroundVideo
         className="absolute inset-0 overflow-hidden"
         playbackPolicy="always"
-        motion={{ y: parallaxY, scale: parallaxScale }}
+        motion={{ y: parallaxY }}
         iframeTitle="Jungle Fish background video"
       />
 
       <JFishVideoOverlay />
 
       <Container className="relative z-10">
-        <header className="mb-10 max-w-2xl sm:mb-12">
-          <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-jungle-300">
-            {t.jfish.eyebrow}
-          </p>
-          <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
-            {t.jfish.title}
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-jungle-200 sm:text-lg">
-            {t.jfish.description}
-          </p>
-        </header>
+        <SectionHeader
+          eyebrow={t.jfish.eyebrow}
+          title={t.jfish.title}
+          description={t.jfish.description}
+          variant="jungle"
+        />
 
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
           <FadeIn>
             <div className="rounded-3xl border border-jungle-700/50 bg-jungle-800/40 p-8 backdrop-blur-[2px]">
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-jungle-700/50 px-3 py-1 text-xs font-medium uppercase tracking-wider text-jungle-200">
-                <TokenIcon className="h-3.5 w-3.5" />
-                {t.jfish.badge}
-              </div>
               <h3 className="font-display text-xl font-semibold text-white">
                 {t.jfish.usesTitle}
               </h3>
@@ -87,6 +99,9 @@ export function JFishSection() {
                   </li>
                 ))}
               </ul>
+              <p className="mt-6 text-sm leading-relaxed text-jungle-200 sm:text-base">
+                {t.jfish.closingText}
+              </p>
               <Button
                 href={contact.x}
                 target="_blank"
@@ -111,25 +126,80 @@ export function JFishSection() {
                 </p>
               </div>
 
-              <div>
+              <div className="rounded-3xl border border-jungle-700/50 bg-jungle-800/40 p-8 backdrop-blur-[2px]">
                 <h3 className="font-display text-xl font-semibold text-white">
-                  {t.jfish.examplesTitle}
+                  {t.jfish.interestTitle}
                 </h3>
-                <div className="mt-4 grid gap-3">
-                  {t.jfish.examples.map((example) => (
-                    <div
-                      key={example.label}
-                      className="flex items-center justify-between rounded-2xl border border-jungle-700/40 bg-jungle-950/30 px-5 py-4 backdrop-blur-[2px]"
-                    >
-                      <span className="font-medium text-jungle-100">
-                        {example.label}
-                      </span>
-                      <span className="text-sm text-lagoon-300">
-                        {example.value}
-                      </span>
+                <p className="mt-2 text-sm font-medium text-jungle-200 sm:text-base">
+                  {t.jfish.contactLabel}
+                </p>
+                {submitted ? (
+                  <div
+                    className="mt-5 rounded-2xl border border-jungle-600/40 bg-jungle-950/30 px-5 py-6 text-sm leading-relaxed text-jungle-100 sm:text-base"
+                    role="status"
+                  >
+                    {t.jfish.successMessage}
+                  </div>
+                ) : (
+                  <form className="mt-5 space-y-4" onSubmit={handleContactSubmit}>
+                    <div>
+                      <label
+                        htmlFor="jfish-name"
+                        className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-jungle-300"
+                      >
+                        {t.jfish.form.name}
+                      </label>
+                      <input
+                        id="jfish-name"
+                        name="name"
+                        type="text"
+                        required
+                        autoComplete="name"
+                        placeholder={t.jfish.form.namePlaceholder}
+                        className={inputClassName}
+                      />
                     </div>
-                  ))}
-                </div>
+                    <div>
+                      <label
+                        htmlFor="jfish-email"
+                        className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-jungle-300"
+                      >
+                        {t.jfish.form.email}
+                      </label>
+                      <input
+                        id="jfish-email"
+                        name="email"
+                        type="email"
+                        required
+                        autoComplete="email"
+                        placeholder={t.jfish.form.emailPlaceholder}
+                        className={inputClassName}
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="jfish-message"
+                        className="mb-1.5 block text-xs font-medium uppercase tracking-wider text-jungle-300"
+                      >
+                        {t.jfish.form.message}
+                      </label>
+                      <textarea
+                        id="jfish-message"
+                        name="message"
+                        required
+                        rows={3}
+                        placeholder={t.jfish.form.messagePlaceholder}
+                        className={`${inputClassName} min-h-[100px] resize-y`}
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="inline-flex cursor-pointer items-center justify-center rounded-full bg-jungle-700 px-4 py-2 text-sm font-medium text-white transition-[background-color,transform,box-shadow] duration-200 hover:scale-[1.02] hover:bg-jungle-800 hover:shadow-md hover:shadow-jungle-950/20 active:scale-[0.97] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-jungle-600"
+                    >
+                      {t.jfish.form.submit}
+                    </button>
+                  </form>
+                )}
               </div>
             </div>
           </FadeIn>

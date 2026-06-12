@@ -8,7 +8,6 @@ const es: TranslationDictionary = {
   },
   nav: {
     about: "Nosotros",
-    experiences: "Experiencias",
     jfish: "$JFISH",
     payments: "Pagos",
     stronghold: "Stronghold",
@@ -40,101 +39,65 @@ const es: TranslationDictionary = {
         description:
           "Tilapia fresca y especies acuáticas cultivadas en entornos controlados y sostenibles.",
       },
-      experiences: {
-        title: "Experiencias",
-        description:
-          "Paseos en bote, actividades al aire libre y momentos educativos que te acercan a la naturaleza.",
-      },
-      nature: {
-        title: "Naturaleza",
-        description:
-          "Jungla exuberante, agua, vida silvestre y aire libre — el corazón de todo lo que hacemos.",
-      },
       accommodation: {
         title: "Hospedaje",
         description:
           "Cabañas y espacios de descanso para relajarte, respirar y permanecer inmerso en el entorno.",
       },
       book: {
-        title: "Los 7 Libros de Jungle Fish",
+        title: "Los Siete Libros de Jungle Fish",
         description:
           "Una guía integral para reconectar con los ritmos de la naturaleza mediante diseño regenerativo, plantas medicinales y el arte de vivir en circuito cerrado en el trópico.",
       },
-    },
-  },
-  experiences: {
-    eyebrow: "Experiencias y servicios",
-    title: "Lo que te espera",
-    description:
-      "Desde comida fresca hasta aventuras en aguas abiertas. Cada servicio está pensado para sentirse natural, memorable y restaurador.",
-    items: {
-      food: {
-        title: "Comida fresca",
+      freshFood: {
+        title: "Comida Fresca",
         description:
           "Tilapia y productos locales servidos directamente desde nuestros sistemas sostenibles.",
       },
-      boat: {
-        title: "Experiencias en bote",
-        description:
-          "Deslízate sobre el agua y explora el paisaje desde una nueva perspectiva.",
-      },
-      outdoor: {
-        title: "Actividades al aire libre",
-        description:
-          "Senderos, recreación y momentos al aire libre para todo tipo de explorador.",
-      },
-      cabins: {
-        title: "Cabañas y descanso",
-        description:
-          "Espacios cómodos para desacelerar y absorber el entorno.",
-      },
       education: {
-        title: "Visitas educativas",
+        title: "Visitas Educativas",
         description:
           "Aprende sobre sostenibilidad, ecología y vivir en equilibrio con la naturaleza.",
       },
-      relaxation: {
-        title: "Relajación",
-        description:
-          "Rincones tranquilos, aire fresco y el ritmo suave de la jungla.",
-      },
     },
-    benefitsTitle: "Por qué visitarnos",
-    benefits: [
-      "Conexión directa con la naturaleza",
-      "Enfoque sostenible y orgánico",
-      "Actividades para familias y aventureros",
-      "Comida fresca de origen local",
-      "Una escapada tranquila del día a día",
-    ],
   },
   jfish: {
-    eyebrow: "Token nativo",
-    title: "Conoce $JFISH",
+    eyebrow: "Conoce $JFISH",
+    title: "Stellar Network News",
     description:
-      "$JFISH es el token nativo del ecosistema Jungle Fish — una forma sencilla de pagar, obtener recompensas y desbloquear experiencias en el lugar.",
-    usesTitle: "Para qué puedes usarlo",
+      "$JFISH es nuestro token nativo recién desarrollado en la red Stellar. Es una forma de invertir, participar y desbloquear las experiencias de la jungla tropical mientras creamos y fortalecemos el potencial de nuestras comunidades y del planeta.",
+    usesTitle: "Cómo usar $JFISH a través de Stellar",
     uses: [
-      "Pagar comida y productos frescos",
-      "Acceder a paseos en bote y actividades",
-      "Canjear beneficios y recompensas en sitio",
-      "Disfrutar descuentos y ventajas exclusivas",
+      "Compra cualquier commodity, producto y moneda del mundo directamente en la red Stellar.",
+      "Conecta y asegura cada parte de tu sistema financiero a través de un stronghold.",
+      "Las transacciones ocurren en segundos vía Stellar, mientras stronghold garantiza que todo quede contabilizado de forma segura.",
+      "Escanea códigos QR para obtener control total y realizar compras en segundos.",
     ],
+    closingText:
+      "Stellar Network News: tu espacio para aprender a comprar, invertir y participar en la red.",
+    xCta: "Síguenos en X",
     howTitle: "Cómo funciona",
     howDescription:
-      "Usa $JFISH junto con efectivo y tarjeta en Jungle Fish. A medida que el ecosistema crece, habrá más experiencias y recompensas — siempre ligadas al lugar, no a finanzas abstractas.",
-    examplesTitle: "Ejemplos de recompensas",
-    examples: [
-      { label: "Plato de tilapia", value: "Canjeable con $JFISH" },
-      { label: "Paseo en bote", value: "Acceso a actividad" },
-      { label: "Beneficios miembro", value: "Próximamente" },
-    ],
-    badge: "En desarrollo",
-    xCta: "Síguenos en X",
+      "Stellar es una red descentralizada sin fines de lucro diseñada para ser accesible para todos. Ya sea que quieras conocer más sobre la red, interactuar con contratos inteligentes o explorar un ecosistema fundamentalmente sencillo, está pensada para que la disfruten personas de 3 a 100 años.",
+    interestTitle: "¿Te interesa Stellar?",
+    contactLabel: "Contáctanos",
+    emailSubject: "Consulta sobre Stellar — Jungle Fish",
+    emailBodyIntro: "Nueva consulta sobre Stellar / $JFISH:",
+    successMessage:
+      "¡Gracias! Tu aplicación de correo debería abrirse con tu mensaje listo para enviar. Si no se abrió, escríbenos directamente al correo de contacto en esta página.",
+    form: {
+      name: "Nombre",
+      namePlaceholder: "Tu nombre",
+      email: "Correo electrónico",
+      emailPlaceholder: "tu@ejemplo.com",
+      message: "Mensaje",
+      messagePlaceholder: "Dejanos un mensaje.",
+      submit: "Enviar",
+    },
   },
   payments: {
     eyebrow: "Métodos de pago",
-    title: "Paga a tu manera",
+    title: "Paga en segundos",
     description:
       "Aceptamos pagos tradicionales y digitales para que tu visita sea fluida — ya prefieras efectivo, tarjeta o cripto.",
     methods: {

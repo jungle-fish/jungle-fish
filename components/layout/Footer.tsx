@@ -2,15 +2,15 @@
 
 import { Container } from "@/components/layout/Container";
 import { contact } from "@/lib/contact";
+import { textLinkClass } from "@/lib/styles/interactive";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
 
 const footerLinks = [
   { href: "#about", key: "about" as const },
-  { href: "#experiences", key: "experiences" as const },
   { href: "#jfish", key: "jfish" as const },
   { href: "#payments", key: "payments" as const },
   { href: "#stronghold", key: "stronghold" as const },
-  { href: "#gallery", key: "gallery" as const },
+  // { href: "#gallery", key: "gallery" as const },
   { href: "#visit", key: "visit" as const },
   { href: "#volunteer", key: "volunteer" as const },
 ];
@@ -39,7 +39,7 @@ export function Footer() {
                 <li key={key}>
                   <a
                     href={href}
-                    className="text-sm text-jungle-200 transition-colors hover:text-white"
+                    className={`text-sm text-jungle-200 ${textLinkClass}`}
                   >
                     {t.nav[key]}
                   </a>
@@ -56,7 +56,7 @@ export function Footer() {
               <li>
                 <a
                   href={`mailto:${contact.email}`}
-                  className="text-sm text-jungle-200 transition-colors hover:text-white"
+                  className={`text-sm text-jungle-200 ${textLinkClass}`}
                 >
                   {contact.email}
                 </a>
@@ -64,7 +64,7 @@ export function Footer() {
               <li>
                 <a
                   href={`tel:${contact.phoneHref}`}
-                  className="text-sm text-jungle-200 transition-colors hover:text-white"
+                  className={`text-sm text-jungle-200 ${textLinkClass}`}
                 >
                   {contact.phoneDisplay}
                 </a>
@@ -74,7 +74,7 @@ export function Footer() {
                   href={contact.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-jungle-200 transition-colors hover:text-white"
+                  className={`text-sm text-jungle-200 ${textLinkClass}`}
                 >
                   {t.footer.facebook}
                 </a>
@@ -84,7 +84,7 @@ export function Footer() {
                   href={contact.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-jungle-200 transition-colors hover:text-white"
+                  className={`text-sm text-jungle-200 ${textLinkClass}`}
                 >
                   {t.footer.instagram}
                 </a>
@@ -94,7 +94,7 @@ export function Footer() {
                   href={contact.x}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-jungle-200 transition-colors hover:text-white"
+                  className={`text-sm text-jungle-200 ${textLinkClass}`}
                 >
                   {t.footer.x}
                 </a>

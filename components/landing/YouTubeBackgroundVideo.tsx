@@ -123,7 +123,7 @@ export function YouTubeBackgroundVideo({
       allow="autoplay; encrypted-media"
       referrerPolicy="strict-origin-when-cross-origin"
       tabIndex={-1}
-      className="pointer-events-none absolute top-1/2 left-1/2 border-0 -translate-x-1/2 -translate-y-1/2"
+      className="pointer-events-none absolute top-1/2 left-1/2 border-0 [transform:translate3d(-50%,-54%,0)]"
       style={{
         width: coverSize.width > 0 ? coverSize.width : "100%",
         height: coverSize.height > 0 ? coverSize.height : "100%",
@@ -132,24 +132,40 @@ export function YouTubeBackgroundVideo({
     />
   );
 
+  const controlMask = (
+    <div
+      className="youtube-background-mask pointer-events-none absolute inset-0 z-[2]"
+      aria-hidden
+    />
+  );
+
+  const videoLayer =
+    motionActive && motionTransform ? (
+      <motion.div
+        style={{
+          x: motionTransform.x,
+          y: motionTransform.y,
+          scale: motionTransform.scale,
+        }}
+        className="absolute inset-0 origin-center overflow-hidden will-change-transform [contain:layout_style_paint] [transform:translateZ(0)]"
+      >
+        {iframe}
+        {controlMask}
+      </motion.div>
+    ) : (
+      <div className="absolute inset-0 overflow-hidden [contain:layout_style_paint] [transform:translateZ(0)]">
+        {iframe}
+        {controlMask}
+      </div>
+    );
+
   return (
-    <div ref={containerRef} className={cn(className)} aria-hidden>
-      {showVideo && (
-        motionActive && motionTransform ? (
-          <motion.div
-            style={{
-              x: motionTransform.x,
-              y: motionTransform.y,
-              scale: motionTransform.scale,
-            }}
-            className="absolute inset-0 origin-center will-change-transform"
-          >
-            {iframe}
-          </motion.div>
-        ) : (
-          iframe
-        )
-      )}
+    <div
+      ref={containerRef}
+      className={cn("overflow-hidden", className)}
+      aria-hidden
+    >
+      {showVideo && videoLayer}
     </div>
   );
 }

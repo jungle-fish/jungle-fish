@@ -1,5 +1,6 @@
-export const DEFAULT_COVER_OVERSCAN = 1.1;
-export const MOTION_COVER_OVERSCAN = 1.22;
+/** Extra scale to crop YouTube chrome (title bar, transport controls, watermark). */
+export const DEFAULT_COVER_OVERSCAN = 1.34;
+export const MOTION_COVER_OVERSCAN = 1.48;
 
 const VIDEO_ASPECT = 16 / 9;
 

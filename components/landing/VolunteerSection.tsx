@@ -23,11 +23,11 @@ export function VolunteerSection() {
     offset: ["start end", "end start"],
   });
 
-  const parallaxY = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
+  const parallaxY = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
   const parallaxScale = useTransform(
     scrollYProgress,
     [0, 0.5, 1],
-    [1, 1.1, 1.2],
+    [1, 1.04, 1.08],
   );
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -208,7 +208,7 @@ export function VolunteerSection() {
 
                 <button
                   type="submit"
-                  className="inline-flex w-full items-center justify-center rounded-full bg-jungle-700 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-jungle-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-jungle-600 sm:w-auto"
+                  className="inline-flex w-full cursor-pointer items-center justify-center rounded-full bg-jungle-700 px-6 py-3 text-base font-medium text-white transition-[background-color,transform,box-shadow] duration-200 hover:scale-[1.02] hover:bg-jungle-800 hover:shadow-md hover:shadow-jungle-900/15 active:scale-[0.97] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-jungle-600 sm:w-auto"
                 >
                   {t.volunteer.form.submit}
                 </button>

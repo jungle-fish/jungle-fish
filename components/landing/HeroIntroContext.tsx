@@ -13,6 +13,7 @@ export type HeroIntroPhase = "loading" | "transition" | "ready";
 type HeroIntroContextValue = {
   phase: HeroIntroPhase;
   isReady: boolean;
+  isContentVisible: boolean;
   usesVideo: boolean;
   setUsesVideo: (value: boolean) => void;
   notifyTransitionStart: () => void;
@@ -42,6 +43,7 @@ export function HeroIntroProvider({ children }: { children: React.ReactNode }) {
     () => ({
       phase,
       isReady: phase === "ready",
+      isContentVisible: phase === "transition" || phase === "ready",
       usesVideo,
       setUsesVideo,
       notifyTransitionStart,

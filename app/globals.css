@@ -102,6 +102,22 @@ body {
   animation: shimmer 18s ease infinite;
 }
 
+/* YouTube background embed: crop chrome and mask residual UI */
+.youtube-background-iframe {
+  transform: translate(-50%, -54%);
+}
+
+.youtube-background-mask {
+  background-image:
+    linear-gradient(to bottom, rgb(0 0 0 / 0.72) 0%, transparent 11%),
+    linear-gradient(to top, rgb(0 0 0 / 0.82) 0%, transparent 17%),
+    radial-gradient(
+      ellipse 9rem 5rem at 100% 100%,
+      rgb(0 0 0 / 0.95) 0%,
+      transparent 72%
+    );
+}
+
 /* JFish section: inverted vignette over background video */
 .jfish-video-overlay {
   background-color: rgb(27 67 50 / 0.28);
@@ -120,4 +136,60 @@ body {
       rgba(22, 71, 51, 0.5) 100%
     );
   }
+}
+
+/* Falling leaves — GPU-friendly CSS animations (no layout-triggering top) */
+@keyframes falling-leaf-drop {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(var(--leaf-rotate-start));
+    opacity: 0;
+  }
+  12% {
+    opacity: var(--leaf-peak-opacity);
+  }
+  82% {
+    opacity: var(--leaf-peak-opacity);
+  }
+  100% {
+    transform: translate3d(var(--leaf-drift-x), 100vh, 0)
+      rotate(var(--leaf-rotate-end));
+    opacity: 0;
+  }
+}
+
+@keyframes falling-leaf-sway {
+  0%,
+  100% {
+    transform: translate3d(calc(var(--leaf-sway) * -1), 0, 0);
+  }
+  50% {
+    transform: translate3d(var(--leaf-sway), 0, 0);
+  }
+}
+
+.falling-leaf-lane {
+  transform: translateZ(0);
+}
+
+.falling-leaf {
+  top: 0;
+  animation: falling-leaf-drop var(--leaf-duration) linear var(--leaf-delay)
+    infinite;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+.falling-leaf__inner {
+  animation: falling-leaf-sway var(--leaf-sway-duration) ease-in-out infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+html[data-fast-scroll="true"] .falling-leaf__inner {
+  animation-play-state: paused;
+}
+
+/* Reduce scroll-linked paint cost during fast/autoscroll */
+html[data-fast-scroll="true"] .hero-gradient {
+  animation-play-state: paused;
 }

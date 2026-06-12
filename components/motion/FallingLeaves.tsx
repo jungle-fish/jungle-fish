@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "framer-motion";
 import {
   FALLING_LEAF_PLACEHOLDER_IMAGES,
   FALLING_LEAVES_DEFAULTS,
@@ -64,12 +64,32 @@ function buildLeafSpecs(
   });
 }
 
-type FallingLeavesLaneProps = {
-  side: "left" | "right";
-  specs: LeafSpec[];
-  laneClassName: string;
-  reducedMotion: boolean;
+type LeafStyle = CSSProperties & {
+  "--leaf-duration": string;
+  "--leaf-delay": string;
+  "--leaf-drift-x": string;
+  "--leaf-rotate-start": string;
+  "--leaf-rotate-end": string;
+  "--leaf-peak-opacity": string;
+  "--leaf-sway": string;
+  "--leaf-sway-duration": string;
 };
+
+function leafStyle(leaf: LeafSpec): LeafStyle {
+  return {
+    left: `${leaf.startX}%`,
+    width: leaf.size,
+    height: leaf.size,
+    "--leaf-duration": `${leaf.duration}s`,
+    "--leaf-delay": `${leaf.delay}s`,
+    "--leaf-drift-x": `${leaf.driftX}px`,
+    "--leaf-rotate-start": `${leaf.rotateStart}deg`,
+    "--leaf-rotate-end": `${leaf.rotateEnd}deg`,
+    "--leaf-peak-opacity": String(leaf.peakOpacity),
+    "--leaf-sway": `${leaf.sway}px`,
+    "--leaf-sway-duration": `${2.8 + leaf.sway * 0.08}s`,
+  };
+}
 
 function FallingLeaf({
   leaf,
@@ -103,41 +123,8 @@ function FallingLeaf({
   }
 
   return (
-    <motion.div
-      className="absolute will-change-[top,transform,opacity]"
-      style={{
-        left: `${leaf.startX}%`,
-        width: leaf.size,
-        height: leaf.size,
-      }}
-      initial={{
-        top: "-12%",
-        x: 0,
-        rotate: leaf.rotateStart,
-        opacity: 0,
-      }}
-      animate={{
-        top: ["-12%", "108%"],
-        x: [0, leaf.driftX * 0.45, leaf.driftX],
-        rotate: [leaf.rotateStart, leaf.rotateEnd],
-        opacity: [0, leaf.peakOpacity, leaf.peakOpacity, 0],
-      }}
-      transition={{
-        duration: leaf.duration,
-        delay: leaf.delay,
-        repeat: Infinity,
-        ease: "linear",
-        times: [0, 0.12, 0.82, 1],
-      }}
-    >
-      <motion.div
-        animate={{ x: [-leaf.sway, leaf.sway, -leaf.sway] }}
-        transition={{
-          duration: 2.8 + leaf.sway * 0.08,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      >
+    <div className="falling-leaf absolute" style={leafStyle(leaf)}>
+      <div className="falling-leaf__inner h-full w-full">
         <Image
           src={leaf.src}
           alt=""
@@ -146,10 +133,17 @@ function FallingLeaf({
           className="h-full w-full object-contain drop-shadow-sm"
           aria-hidden
         />
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 }
+
+type FallingLeavesLaneProps = {
+  side: "left" | "right";
+  specs: LeafSpec[];
+  laneClassName: string;
+  reducedMotion: boolean;
+};
 
 function FallingLeavesLane({
   side,
@@ -160,7 +154,7 @@ function FallingLeavesLane({
   return (
     <div
       className={cn(
-        "pointer-events-none absolute inset-y-0 z-0 hidden overflow-hidden lg:block",
+        "falling-leaf-lane pointer-events-none absolute inset-y-0 z-0 hidden overflow-hidden lg:block",
         side === "left" ? "left-0" : "right-0",
         laneClassName,
       )}

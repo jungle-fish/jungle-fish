@@ -2,6 +2,7 @@
 
 import { forwardRef } from "react";
 import { cn } from "@/lib/utils";
+import { SectionHeader } from "@/components/motion/SectionHeader";
 import { Container } from "./Container";
 
 type SectionProps = {
@@ -39,8 +40,6 @@ export const Section = forwardRef<HTMLElement, SectionProps>(function Section(
   },
   ref,
 ) {
-  const isCenter = align === "center";
-
   return (
     <section
       ref={ref}
@@ -53,45 +52,13 @@ export const Section = forwardRef<HTMLElement, SectionProps>(function Section(
     >
       {decorations}
       <Container className={cn("relative z-10", containerClassName)}>
-        {(eyebrow || title || description) && (
-          <header
-            className={cn(
-              "mb-10 max-w-2xl sm:mb-12",
-              isCenter && "mx-auto text-center",
-            )}
-          >
-            {eyebrow && (
-              <p
-                className={cn(
-                  "mb-3 text-sm font-medium uppercase tracking-[0.2em]",
-                  variant === "jungle" ? "text-jungle-300" : "text-jungle-700",
-                )}
-              >
-                {eyebrow}
-              </p>
-            )}
-            {title && (
-              <h2
-                className={cn(
-                  "font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl lg:text-5xl",
-                  variant === "jungle" ? "text-white" : "text-jungle-950",
-                )}
-              >
-                {title}
-              </h2>
-            )}
-            {description && (
-              <p
-                className={cn(
-                  "mt-4 text-base leading-relaxed sm:text-lg",
-                  variant === "jungle" ? "text-jungle-200" : "text-muted",
-                )}
-              >
-                {description}
-              </p>
-            )}
-          </header>
-        )}
+        <SectionHeader
+          eyebrow={eyebrow}
+          title={title}
+          description={description}
+          variant={variant === "jungle" ? "jungle" : "default"}
+          align={align}
+        />
         {children}
       </Container>
     </section>

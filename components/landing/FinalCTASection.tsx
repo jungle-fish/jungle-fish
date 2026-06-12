@@ -3,7 +3,9 @@
 import { Section } from "@/components/layout/Section";
 import { CTA } from "@/components/ui/CTA";
 import { FadeIn } from "@/components/motion/FadeIn";
+import { SectionHeader } from "@/components/motion/SectionHeader";
 import { contact } from "@/lib/contact";
+import { textLinkClass } from "@/lib/styles/interactive";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
 
 export function FinalCTASection() {
@@ -12,16 +14,14 @@ export function FinalCTASection() {
   return (
     <Section id="visit" variant="default" align="center">
       <FadeIn className="mx-auto max-w-3xl">
-        <p className="mb-3 text-sm font-medium uppercase tracking-[0.2em] text-jungle-700">
-          {t.finalCta.eyebrow}
-        </p>
+        <SectionHeader eyebrow={t.finalCta.eyebrow} align="center" />
         <CTA
           title={t.finalCta.title}
           description={t.finalCta.description}
           primaryLabel={t.finalCta.ctaPrimary}
           primaryHref={`mailto:${contact.email}`}
           secondaryLabel={t.finalCta.ctaSecondary}
-          secondaryHref="#gallery"
+          secondaryHref="#about"
         />
 
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -33,7 +33,7 @@ export function FinalCTASection() {
               href={contact.mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-1 block text-sm text-jungle-800 underline-offset-4 hover:underline sm:text-base"
+              className={`mt-1 block text-sm text-jungle-800 sm:text-base ${textLinkClass}`}
             >
               {contact.address}
             </a>
@@ -44,7 +44,7 @@ export function FinalCTASection() {
             </p>
             <a
               href={`tel:${contact.phoneHref}`}
-              className="mt-1 block text-sm text-jungle-800 underline-offset-4 hover:underline sm:text-base"
+              className={`mt-1 block text-sm text-jungle-800 sm:text-base ${textLinkClass}`}
             >
               {contact.phoneDisplay}
             </a>
@@ -55,7 +55,7 @@ export function FinalCTASection() {
             </p>
             <a
               href={`mailto:${contact.email}`}
-              className="mt-1 block text-sm text-jungle-800 underline-offset-4 hover:underline sm:text-base"
+              className={`mt-1 block text-sm text-jungle-800 sm:text-base ${textLinkClass}`}
             >
               {contact.email}
             </a>

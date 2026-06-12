@@ -1,13 +1,11 @@
 "use client";
 
-import { useRef } from "react";
 import Image from "next/image";
-import { useScroll } from "framer-motion";
 import { Section } from "@/components/layout/Section";
 import { Card } from "@/components/ui/Card";
 import { FadeIn } from "@/components/motion/FadeIn";
-import { AboutSectionDecorations } from "@/components/landing/AboutSectionDecorations";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
+import { FallingLeaves } from "../motion/FallingLeaves";
 
 const cardConfig = [
   {
@@ -24,20 +22,6 @@ const cardConfig = [
     imageSrc: "https://pbs.twimg.com/media/Essm9FCXcAAvZo0.jpg",
   },
   {
-    key: "experiences",
-    iconSrc: "/icons/icon_boat.webp",
-    accent: "sand" as const,
-    imageSrc:
-      "https://bestcostaricadmc.com/wp-content/uploads/2-5-1024x576.jpg",
-  },
-  {
-    key: "nature",
-    iconSrc: "/icons/icon_tree.webp",
-    accent: "green" as const,
-    imageSrc:
-      "https://foxiepass.com/blog/uploads/20230505/costa-rica2_aucGuK.jpg",
-  },
-  {
     key: "accommodation",
     iconSrc: "/icons/icon_house.webp",
     accent: "earth" as const,
@@ -48,30 +32,36 @@ const cardConfig = [
     key: "book",
     iconSrc: "/icons/icon_bookleaf.webp",
     accent: "sand" as const,
+    imageSrc: "/images/image_drawn_lake.jpg",
+  },
+  {
+    key: "freshFood",
+    iconSrc: "/icons/icon_humburger.webp",
+    accent: "sand" as const,
     imageSrc:
-      "/images/image_drawn_lake.jpg",
+      "https://s3.ca-central-1.amazonaws.com/oc-bodhisurfyoga.com/wp-content/uploads/2023/06/05161643/gallo-pinto.jpg",
+  },
+  {
+    key: "education",
+    iconSrc: "/icons/icon_mountain.webp",
+    accent: "green" as const,
+    imageSrc:
+      "https://www.cloudbridge.org/wp-content/uploads/2016/07/Students_Plant_Trees-1024x1004.jpg",
   },
 ] as const;
 
 export function AboutSection() {
   const { t } = useLanguage();
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
 
   return (
     <Section
-      ref={sectionRef}
       id="about"
       eyebrow={t.about.eyebrow}
       title={t.about.title}
       description={t.about.description}
       variant="cream"
-      decorations={
-        <AboutSectionDecorations scrollYProgress={scrollYProgress} />
-      }
+      className="overflow-x-clip"
+      decorations={<FallingLeaves />}
     >
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 [&>*]:h-full">
         {cardConfig.map(({ key, iconSrc, accent, imageSrc }, index) => {
