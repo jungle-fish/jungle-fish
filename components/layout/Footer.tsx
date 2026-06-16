@@ -10,7 +10,6 @@ const footerLinks = [
   { href: "#jfish", key: "jfish" as const },
   { href: "#payments", key: "payments" as const },
   { href: "#stronghold", key: "stronghold" as const },
-  // { href: "#gallery", key: "gallery" as const },
   { href: "#visit", key: "visit" as const },
   { href: "#volunteer", key: "volunteer" as const },
 ];

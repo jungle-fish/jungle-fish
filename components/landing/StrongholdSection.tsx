@@ -1,10 +1,11 @@
 "use client";
 
 import type { ComponentType, SVGProps } from "react";
-import Image from "next/image";
+import { CldImage } from "next-cloudinary";
 import { Section } from "@/components/layout/Section";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
+import { CLOUD_IMAGE } from "@/lib/media";
 import { cn } from "@/lib/utils";
 
 function QrPayIcon(props: SVGProps<SVGSVGElement>) {
@@ -95,13 +96,14 @@ export function StrongholdSection() {
     >
       <FadeIn>
         <div className="overflow-hidden rounded-3xl border border-jungle-800/15 bg-linear-to-br from-jungle-950 via-jungle-900 to-jungle-800 p-6 text-center sm:p-8 lg:p-10">
-          <Image
-            src="/icons/icon_stronghold.webp"
-            alt=""
+          <CldImage
+            src={CLOUD_IMAGE.strongholdIcon}
+            alt="Stronghold"
             width={200}
             height={64}
+            quality="auto"
+            format="auto"
             className="mx-auto h-10 w-auto object-contain sm:h-12"
-            aria-hidden
           />
           <p className="mt-4 inline-flex items-center rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-medium uppercase tracking-wider text-jungle-200">
             {t.stronghold.badge}

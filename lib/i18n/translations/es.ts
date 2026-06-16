@@ -11,7 +11,6 @@ const es: TranslationDictionary = {
     jfish: "$JFISH",
     payments: "Pagos",
     stronghold: "Stronghold",
-    gallery: "Galería",
     visit: "Visítanos",
     volunteer: "Voluntariado",
   },
@@ -178,13 +177,7 @@ const es: TranslationDictionary = {
       "Discusión sobre Real World Assets, contratos inteligentes y desarrollo sostenible",
     ],
     closingNote:
-      "Esta integración es parte activa de la hoja de ruta de Jungle Fish — conectando el turismo regenerativo con tecnología financiera práctica en el terreno. Los detalles de implementación pueden evolucionar a medida que avance la integración; efectivo y tarjeta siguen disponibles durante la transición.",
-  },
-  gallery: {
-    eyebrow: "Galería",
-    title: "Un vistazo al lugar",
-    description:
-      "Agua, jungla, vida silvestre y cielo abierto — imágenes provisionales hasta recibir fotografía y video finales.",
+      "La integración con Stronghold se está implementando en el santuario. Efectivo y tarjeta siguen disponibles durante la transición.",
   },
   volunteer: {
     eyebrow: "Únete al movimiento",
@@ -230,7 +223,7 @@ const es: TranslationDictionary = {
     description:
       "Ya sea por un día o por la noche, la naturaleza te espera. Escríbenos para conocer ubicación, horarios y próximas experiencias.",
     ctaPrimary: "Contáctanos",
-    ctaSecondary: "Ver galería",
+    ctaSecondary: "Sobre nosotros",
     locationLabel: "Ubicación",
     phoneLabel: "Teléfono",
     contactLabel: "Correo",
@@ -243,16 +236,6 @@ const es: TranslationDictionary = {
     facebook: "Facebook",
     instagram: "Instagram",
     x: "X",
-  },
-  audio: {
-    title: "Sonidos ambientales",
-    play: "Reproducir",
-    pause: "Pausar",
-    next: "Siguiente",
-    previous: "Anterior",
-    playlist: "Lista",
-    nowPlaying: "Reproduciendo",
-    trackPlaceholder: "Ambiente de jungla",
   },
   language: {
     en: "English",

@@ -9,7 +9,6 @@ const en = {
     jfish: "$JFISH",
     payments: "Payments",
     stronghold: "Stronghold",
-    gallery: "Gallery",
     visit: "Visit Us",
     volunteer: "Volunteer",
   },
@@ -89,7 +88,7 @@ const en = {
       email: "Email",
       emailPlaceholder: "you@example.com",
       message: "Message",
-      messagePlaceholder: "Let us a message.",
+      messagePlaceholder: "Your message",
       submit: "Submit",
     },
   },
@@ -121,7 +120,7 @@ const en = {
   },
   stronghold: {
     eyebrow: "Payment infrastructure",
-    title: "How we works with Stronghold",
+    title: "How we work with Stronghold",
     description:
       "Stronghold Pay connects blockchain technology with real commerce at our eco-sanctuary — giving visitors and local merchants a practical way to pay and get paid digitally.",
     badge: "Rolling out at the sanctuary",
@@ -172,13 +171,7 @@ const en = {
       "Discussion of Real World Assets, smart contracts and sustainable development",
     ],
     closingNote:
-      "This is an active part of Jungle Fish's roadmap — connecting regenerative tourism with practical financial technology on the ground. Rollout details may evolve as integration progresses; cash and card remain available during the transition.",
-  },
-  gallery: {
-    eyebrow: "Gallery",
-    title: "A glimpse of the place",
-    description:
-      "Water, jungle, wildlife and open skies — visual placeholders until final photography and video arrive.",
+      "Stronghold integration is rolling out at the sanctuary. Cash and card remain available during the transition.",
   },
   volunteer: {
     eyebrow: "Join the movement",
@@ -224,7 +217,7 @@ const en = {
     description:
       "Whether you come for a day or stay for the night, nature is waiting. Reach out to learn more about location, hours and upcoming experiences.",
     ctaPrimary: "Get in touch",
-    ctaSecondary: "View gallery",
+    ctaSecondary: "About us",
     locationLabel: "Location",
     phoneLabel: "Phone",
     contactLabel: "Email",
@@ -237,16 +230,6 @@ const en = {
     facebook: "Facebook",
     instagram: "Instagram",
     x: "X",
-  },
-  audio: {
-    title: "Ambient sounds",
-    play: "Play",
-    pause: "Pause",
-    next: "Next",
-    previous: "Previous",
-    playlist: "Playlist",
-    nowPlaying: "Now playing",
-    trackPlaceholder: "Jungle ambience",
   },
   language: {
     en: "English",

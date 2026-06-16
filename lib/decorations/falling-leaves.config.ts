@@ -1,5 +1,4 @@
-/** Replace these paths when final leaf assets are ready. */
-export const FALLING_LEAF_PLACEHOLDER_IMAGES = [
+export const FALLING_LEAF_IMAGES = [
   "/images/image_leaf_a.webp",
   "/images/image_leaf_b.webp",
   "/images/image_leaf_c.webp",
@@ -16,7 +15,6 @@ export type FallingLeavesSide = "left" | "right" | "both";
 
 export type FallingLeavesOptions = {
   side?: FallingLeavesSide;
-  /** Leaves per lane (left and/or right). */
   countPerSide?: number;
   laneClassName?: string;
   images?: readonly string[];

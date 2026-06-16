@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { useActiveSection } from "@/hooks/useActiveSection";
+import { useFastScroll } from "@/hooks/useFastScroll";
 import { cn } from "@/lib/utils";
 import { interactivePress, navLinkClass } from "@/lib/styles/interactive";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
@@ -23,7 +24,6 @@ const navLinks = [
   { href: "#payments", key: "payments" as const, sectionId: "payments" },
   { href: "#jfish", key: "jfish" as const, sectionId: "jfish" },
   { href: "#stronghold", key: "stronghold" as const, sectionId: "stronghold" },
-  // { href: "#gallery", key: "gallery" as const, sectionId: "gallery" },
   { href: "#volunteer", key: "volunteer" as const, sectionId: "volunteer" },
 ];
 
@@ -32,6 +32,7 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const activeSection = useActiveSection(SECTION_IDS);
+  useFastScroll();
 
   useEffect(() => {
     let rafId = 0;

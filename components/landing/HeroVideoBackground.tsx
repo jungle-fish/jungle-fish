@@ -6,11 +6,11 @@ import {
   type MotionValue,
   useAnimationControls,
 } from "framer-motion";
-import { YouTubeBackgroundVideo } from "@/components/landing/YouTubeBackgroundVideo";
-import { shouldUseHeroBackgroundVideo } from "@/lib/video/youtube-background";
+import { CloudinaryBackgroundVideo } from "@/components/landing/CloudinaryBackgroundVideo";
 import { useHeroIntro } from "@/components/landing/HeroIntroContext";
+import { CLOUD_VIDEO } from "@/lib/media";
 
-const VIDEO_LOAD_TIMEOUT_MS = 8_000;
+const VIDEO_LOAD_TIMEOUT_MS = 5_000;
 const MIN_BRAND_IDLE_MS = 350;
 const CROSSFADE_MS = 450;
 
@@ -23,12 +23,17 @@ type HeroVideoBackgroundProps = {
   scale: MotionValue<number>;
 };
 
+function prefersReducedMotion() {
+  if (typeof window === "undefined") return false;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
 export function HeroVideoBackground({ y, scale }: HeroVideoBackgroundProps) {
   const { setUsesVideo, notifyTransitionStart, notifyReady, notifyFallback } =
     useHeroIntro();
 
   const brandControls = useAnimationControls();
-  const iframeLoadedRef = useRef(false);
+  const videoReadyRef = useRef(false);
   const transitionStartedRef = useRef(false);
   const introCompleteRef = useRef(false);
   const enterDoneAtRef = useRef<number | null>(null);
@@ -46,15 +51,11 @@ export function HeroVideoBackground({ y, scale }: HeroVideoBackgroundProps) {
   }, []);
 
   const syncVideoPreference = useCallback(() => {
-    const allowed = shouldUseHeroBackgroundVideo();
+    const allowed = !prefersReducedMotion();
     setVideoAllowed(allowed);
     setUsesVideo(allowed);
 
-    if (allowed) {
-      if (introCompleteRef.current && iframeLoadedRef.current) {
-        setShowFallback(false);
-      }
-    } else {
+    if (!allowed) {
       notifyFallback();
       if (introCompleteRef.current) {
         setShowFallback(true);
@@ -69,7 +70,7 @@ export function HeroVideoBackground({ y, scale }: HeroVideoBackgroundProps) {
       introCompleteRef.current = true;
 
       const withVideo =
-        videoAllowed && !forceFallback && iframeLoadedRef.current;
+        videoAllowed && !forceFallback && videoReadyRef.current;
 
       notifyTransitionStart();
       setWhiteOpacity(0);
@@ -106,8 +107,8 @@ export function HeroVideoBackground({ y, scale }: HeroVideoBackgroundProps) {
     }, delay);
   }, [runExitSequence]);
 
-  const handleVideoReady = useCallback(() => {
-    iframeLoadedRef.current = true;
+  const handleVideoCanPlay = useCallback(() => {
+    videoReadyRef.current = true;
 
     if (introCompleteRef.current) {
       setShowFallback(false);
@@ -154,7 +155,7 @@ export function HeroVideoBackground({ y, scale }: HeroVideoBackgroundProps) {
         },
       });
 
-      if (iframeLoadedRef.current || !videoAllowed) {
+      if (videoReadyRef.current || !videoAllowed) {
         tryStartExit();
       }
     }
@@ -170,7 +171,7 @@ export function HeroVideoBackground({ y, scale }: HeroVideoBackgroundProps) {
     if (!videoAllowed || !mounted) return;
 
     const timeout = window.setTimeout(() => {
-      if (!iframeLoadedRef.current && !transitionStartedRef.current) {
+      if (!videoReadyRef.current && !transitionStartedRef.current) {
         notifyFallback();
         void runExitSequence(true);
       }
@@ -191,12 +192,12 @@ export function HeroVideoBackground({ y, scale }: HeroVideoBackgroundProps) {
         aria-hidden
       />
 
-      <YouTubeBackgroundVideo
+      <CloudinaryBackgroundVideo
+        publicId={CLOUD_VIDEO.background}
         className="absolute inset-0 overflow-hidden"
-        playbackPolicy="always"
         enabled={mounted && videoAllowed}
-        onLoad={handleVideoReady}
-        iframeTitle="Jungle Fish background video"
+        onCanPlay={handleVideoCanPlay}
+        title="Jungle Fish background video"
       />
 
       <motion.div
