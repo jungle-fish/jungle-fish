@@ -102,23 +102,7 @@ body {
   animation: shimmer 18s ease infinite;
 }
 
-/* YouTube background embed: crop chrome and mask residual UI */
-.youtube-background-iframe {
-  transform: translate(-50%, -54%);
-}
 
-.youtube-background-mask {
-  background-image:
-    linear-gradient(to bottom, rgb(0 0 0 / 0.72) 0%, transparent 11%),
-    linear-gradient(to top, rgb(0 0 0 / 0.82) 0%, transparent 17%),
-    radial-gradient(
-      ellipse 9rem 5rem at 100% 100%,
-      rgb(0 0 0 / 0.95) 0%,
-      transparent 72%
-    );
-}
-
-/* JFish section: inverted vignette over background video */
 .jfish-video-overlay {
   background-color: rgb(27 67 50 / 0.28);
   background-image: radial-gradient(
@@ -138,7 +122,6 @@ body {
   }
 }
 
-/* Falling leaves — GPU-friendly CSS animations (no layout-triggering top) */
 @keyframes falling-leaf-drop {
   0% {
     transform: translate3d(0, -10vh, 0) rotate(var(--leaf-rotate-start));
@@ -189,7 +172,6 @@ html[data-fast-scroll="true"] .falling-leaf__inner {
   animation-play-state: paused;
 }
 
-/* Reduce scroll-linked paint cost during fast/autoscroll */
 html[data-fast-scroll="true"] .hero-gradient {
   animation-play-state: paused;
 }

@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import Image from "next/image";
 import { useReducedMotion } from "framer-motion";
 import {
-  FALLING_LEAF_PLACEHOLDER_IMAGES,
+  FALLING_LEAF_IMAGES,
   FALLING_LEAVES_DEFAULTS,
   type FallingLeavesOptions,
   type FallingLeavesSide,
@@ -176,7 +176,7 @@ export function FallingLeaves({
   side = FALLING_LEAVES_DEFAULTS.side,
   countPerSide = FALLING_LEAVES_DEFAULTS.countPerSide,
   laneClassName = FALLING_LEAVES_DEFAULTS.laneClassName,
-  images = FALLING_LEAF_PLACEHOLDER_IMAGES,
+  images = FALLING_LEAF_IMAGES,
 }: FallingLeavesOptions = {}) {
   const prefersReducedMotion = useReducedMotion();
   const [mounted, setMounted] = useState(false);

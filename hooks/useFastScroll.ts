@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-/** px/ms — above this we treat scroll as "fast" (middle-click autoscroll, flick, etc.) */
 const FAST_SCROLL_VELOCITY = 2.4;
 const FAST_SCROLL_COOLDOWN_MS = 100;
 

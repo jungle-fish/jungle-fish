@@ -5,9 +5,10 @@ import { useScroll, useTransform } from "framer-motion";
 import { Container } from "@/components/layout/Container";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { SectionHeader } from "@/components/motion/SectionHeader";
-import { YouTubeBackgroundVideo } from "@/components/landing/YouTubeBackgroundVideo";
+import { CloudinaryBackgroundVideo } from "@/components/landing/CloudinaryBackgroundVideo";
 import { Button } from "@/components/ui/Button";
 import { contact } from "@/lib/contact";
+import { CLOUD_VIDEO } from "@/lib/media";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
 
 const inputClassName =
@@ -65,11 +66,11 @@ export function JFishSection() {
       id="jfish"
       className="relative overflow-hidden bg-jungle-900 py-16 text-jungle-100 sm:py-20 lg:py-24"
     >
-      <YouTubeBackgroundVideo
+      <CloudinaryBackgroundVideo
+        publicId={CLOUD_VIDEO.background}
         className="absolute inset-0 overflow-hidden"
-        playbackPolicy="always"
         motion={{ y: parallaxY }}
-        iframeTitle="Jungle Fish background video"
+        title="Jungle Fish background video"
       />
 
       <JFishVideoOverlay />

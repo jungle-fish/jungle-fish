@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { CldImage } from "next-cloudinary";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -9,6 +10,7 @@ type CardProps = {
   description: string;
   icon?: React.ReactNode;
   imageSrc?: string;
+  cloudinaryId?: string;
   imageAlt?: string;
   className?: string;
   accent?: "green" | "lagoon" | "sand" | "earth";
@@ -26,11 +28,12 @@ export function Card({
   description,
   icon,
   imageSrc,
+  cloudinaryId,
   imageAlt = "",
   className,
   accent = "green",
 }: CardProps) {
-  const hasImage = Boolean(imageSrc);
+  const hasImage = Boolean(imageSrc ?? cloudinaryId);
 
   return (
     <motion.article
@@ -45,13 +48,27 @@ export function Card({
     >
       {hasImage && (
         <div className="relative aspect-16/10 w-full overflow-hidden">
-          <Image
-            src={imageSrc!}
-            alt={imageAlt || title}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
+          {cloudinaryId ? (
+            <CldImage
+              src={cloudinaryId}
+              alt={imageAlt || title}
+              fill
+              crop="fill"
+              gravity="auto"
+              quality="auto"
+              format="auto"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          ) : (
+            <Image
+              src={imageSrc!}
+              alt={imageAlt || title}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+          )}
           <div
             aria-hidden
             className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-jungle-950/80 to-transparent"

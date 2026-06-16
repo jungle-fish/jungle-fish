@@ -1,8 +1,8 @@
 # Jungle Fish — Landing Page
 
-Marketing website for [Jungle Fish](https://github.com), an eco-sanctuary in Costa Rica combining sustainable tourism, permaculture, aquaculture, and the $JFISH token ecosystem.
+Marketing website for Jungle Fish, an eco-sanctuary in Costa Rica combining sustainable tourism, permaculture, aquaculture, and the $JFISH token ecosystem.
 
-Single-page landing site with English/Spanish support, scroll animations, and sections for experiences, payments, Stronghold integration, volunteering, and contact.
+Single-page landing site with English/Spanish support, scroll animations, and sections for about, payments, Stronghold integration, volunteering, and contact.
 
 ## Tech stack
 
@@ -46,20 +46,17 @@ lib/
   i18n/                 # EN/ES translations
   volunteer/            # Volunteer form helpers
 public/                 # Icons, images, static assets
-docs/                   # Business & content reference (not served)
 ```
 
 ## Landing sections
 
-1. Hero — video background, primary CTAs  
-2. About — ecosystem overview  
-3. Experiences — services & benefits  
-4. $JFISH — token info & rewards  
-5. Payments — cash, card, USDC, $JFISH  
-6. Stronghold — payment infrastructure & workshops  
-7. Gallery — photo placeholders  
-8. Visit — contact & location  
-9. Volunteer — application form (mailto)
+1. Hero — video background, primary CTAs
+2. About — ecosystem overview and experiences
+3. Payments — cash, card, USDC, $JFISH
+4. $JFISH — Stellar network info and contact
+5. Stronghold — payment infrastructure and workshops
+6. Visit — contact and location
+7. Volunteer — application form (mailto)
 
 ## Configuration
 
@@ -84,22 +81,13 @@ Preview deployments run automatically on pull requests when connected to GitHub.
 
 ### Production (GoDaddy)
 
-Standard GoDaddy shared hosting does **not** run Next.js server-side out of the box. Options for production:
+Standard GoDaddy shared hosting does not run Next.js server-side out of the box. Options for production:
 
 - **Static export** — add `output: 'export'` to `next.config.ts` and upload the `out/` folder to GoDaddy.
 - **VPS / Node hosting** — run `pnpm build` then `pnpm start` on a server with Node.js.
 - **DNS only** — host on Vercel (or similar) and point the GoDaddy domain via DNS.
 
 Choose based on whether you need SSR/API routes (this project currently does not).
-
-## Documentation
-
-Content and strategy notes live in `docs/`:
-
-- `business.md` — project overview  
-- `landing.md` — section content reference  
-- `jungle-fish-volunteering-information.md` — volunteering program  
-- `how-jungle-flish-works-with-stronghold.md` — Stronghold integration  
 
 ## License
 

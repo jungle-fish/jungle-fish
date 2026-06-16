@@ -5,48 +5,45 @@ import { Section } from "@/components/layout/Section";
 import { Card } from "@/components/ui/Card";
 import { FadeIn } from "@/components/motion/FadeIn";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
-import { FallingLeaves } from "../motion/FallingLeaves";
+import { FallingLeaves } from "@/components/motion/FallingLeaves";
+import { CLOUD_IMAGE } from "@/lib/media";
 
 const cardConfig = [
   {
     key: "permaculture",
     iconSrc: "/icons/icon_permaculture.webp",
     accent: "green" as const,
-    imageSrc:
-      "https://www.ecoworldbuilding.com/wp-content/uploads/2022/03/permacultura2.jpg",
+    cloudinaryId: CLOUD_IMAGE.permaculture,
   },
   {
     key: "aquaculture",
     iconSrc: "/icons/icon_fish.webp",
     accent: "lagoon" as const,
-    imageSrc: "https://pbs.twimg.com/media/Essm9FCXcAAvZo0.jpg",
+    cloudinaryId: CLOUD_IMAGE.aquaculture,
   },
   {
     key: "accommodation",
     iconSrc: "/icons/icon_house.webp",
     accent: "earth" as const,
-    imageSrc:
-      "https://travelrebels.com/wp-content/uploads/2023/06/La-Tigra-Rainforest-Lodge-bijzonder-overnachten-Costa-Rica-1675x1116.jpg",
+    cloudinaryId: CLOUD_IMAGE.accommodation,
   },
   {
     key: "book",
     iconSrc: "/icons/icon_bookleaf.webp",
     accent: "sand" as const,
-    imageSrc: "/images/image_drawn_lake.jpg",
+    cloudinaryId: CLOUD_IMAGE.drawnLake,
   },
   {
     key: "freshFood",
     iconSrc: "/icons/icon_humburger.webp",
     accent: "sand" as const,
-    imageSrc:
-      "https://s3.ca-central-1.amazonaws.com/oc-bodhisurfyoga.com/wp-content/uploads/2023/06/05161643/gallo-pinto.jpg",
+    cloudinaryId: CLOUD_IMAGE.freshFood,
   },
   {
     key: "education",
     iconSrc: "/icons/icon_mountain.webp",
     accent: "green" as const,
-    imageSrc:
-      "https://www.cloudbridge.org/wp-content/uploads/2016/07/Students_Plant_Trees-1024x1004.jpg",
+    cloudinaryId: CLOUD_IMAGE.education,
   },
 ] as const;
 
@@ -64,7 +61,7 @@ export function AboutSection() {
       decorations={<FallingLeaves />}
     >
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 [&>*]:h-full">
-        {cardConfig.map(({ key, iconSrc, accent, imageSrc }, index) => {
+        {cardConfig.map(({ key, iconSrc, accent, ...imageProps }, index) => {
           const card = t.about.cards[key];
           return (
             <FadeIn key={key} delay={index * 0.08} className="h-full">
@@ -82,7 +79,7 @@ export function AboutSection() {
                     aria-hidden
                   />
                 }
-                imageSrc={imageSrc}
+                {...imageProps}
                 imageAlt={card.title}
               />
             </FadeIn>
