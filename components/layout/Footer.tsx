@@ -6,12 +6,12 @@ import { textLinkClass } from "@/lib/styles/interactive";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
 
 const footerLinks = [
-  { href: "#about", key: "about" as const },
-  { href: "#jfish", key: "jfish" as const },
-  { href: "#payments", key: "payments" as const },
-  { href: "#stronghold", key: "stronghold" as const },
-  { href: "#visit", key: "visit" as const },
-  { href: "#volunteer", key: "volunteer" as const },
+  { href: "/#about", key: "about" as const },
+  { href: "/#jfish", key: "jfish" as const },
+  { href: "/#payments", key: "payments" as const },
+  { href: "/#stronghold", key: "stronghold" as const },
+  { href: "/#visit", key: "visit" as const },
+  { href: "/#volunteer", key: "volunteer" as const },
 ];
 
 export function Footer() {

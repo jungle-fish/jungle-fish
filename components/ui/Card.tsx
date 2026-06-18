@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { CldImage } from "next-cloudinary";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -12,6 +13,8 @@ type CardProps = {
   imageSrc?: string;
   cloudinaryId?: string;
   imageAlt?: string;
+  href?: string;
+  linkLabel?: string;
   className?: string;
   accent?: "green" | "lagoon" | "sand" | "earth";
 };
@@ -30,12 +33,14 @@ export function Card({
   imageSrc,
   cloudinaryId,
   imageAlt = "",
+  href,
+  linkLabel,
   className,
   accent = "green",
 }: CardProps) {
   const hasImage = Boolean(imageSrc ?? cloudinaryId);
 
-  return (
+  const article = (
     <motion.article
       whileHover={{ y: -4 }}
       transition={{ type: "spring", stiffness: 320, damping: 22 }}
@@ -43,6 +48,7 @@ export function Card({
         "group flex h-full flex-col overflow-hidden rounded-2xl border bg-linear-to-br shadow-sm shadow-jungle-900/5",
         hasImage ? "p-0" : "p-6",
         accentStyles[accent],
+        href && "cursor-pointer",
         className,
       )}
     >
@@ -93,7 +99,22 @@ export function Card({
         <p className="mt-2 flex-1 text-sm leading-relaxed text-muted sm:text-base">
           {description}
         </p>
+        {href && linkLabel && (
+          <p className="mt-4 text-sm font-medium text-jungle-700 transition-colors group-hover:text-jungle-900">
+            {linkLabel} →
+          </p>
+        )}
       </div>
     </motion.article>
   );
+
+  if (href) {
+    return (
+      <Link href={href} className="block h-full rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-jungle-600">
+        {article}
+      </Link>
+    );
+  }
+
+  return article;
 }

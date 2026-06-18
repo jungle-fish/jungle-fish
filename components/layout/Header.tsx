@@ -20,11 +20,11 @@ const SECTION_IDS = [
 ] as const;
 
 const navLinks = [
-  { href: "#about", key: "about" as const, sectionId: "about" },
-  { href: "#payments", key: "payments" as const, sectionId: "payments" },
-  { href: "#jfish", key: "jfish" as const, sectionId: "jfish" },
-  { href: "#stronghold", key: "stronghold" as const, sectionId: "stronghold" },
-  { href: "#volunteer", key: "volunteer" as const, sectionId: "volunteer" },
+  { href: "/#about", key: "about" as const, sectionId: "about" },
+  { href: "/#payments", key: "payments" as const, sectionId: "payments" },
+  { href: "/#jfish", key: "jfish" as const, sectionId: "jfish" },
+  { href: "/#stronghold", key: "stronghold" as const, sectionId: "stronghold" },
+  { href: "/#volunteer", key: "volunteer" as const, sectionId: "volunteer" },
 ];
 
 export function Header() {
@@ -75,7 +75,7 @@ export function Header() {
     >
       <Container as="nav" className="flex h-16 items-center justify-between sm:h-18">
         <a
-          href="#"
+          href="/"
           className={cn(
             interactivePress,
             "font-display text-lg font-semibold tracking-tight transition-colors hover:scale-[1.02]",
@@ -117,7 +117,7 @@ export function Header() {
           </button>
 
           <Button
-            href="#visit"
+            href="/#visit"
             variant={scrolled || menuOpen ? "primary" : "outline"}
             size="sm"
             className={cn(
@@ -183,7 +183,7 @@ export function Header() {
               </a>
             ))}
             <Button
-              href="#visit"
+              href="/#visit"
               variant="primary"
               size="md"
               className="mt-2"
