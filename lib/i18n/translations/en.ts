@@ -25,36 +25,215 @@ const en = {
     title: "A living ecosystem",
     description:
       "We combine sustainable production, recreational activities and natural hospitality so every visit feels like a genuine escape into the jungle.",
+    detailBack: "Back to About",
+    detailCta: "Plan your visit",
+    cardCta: "Learn more",
+    experienceTitle: "What you'll experience",
+    visitNoteTitle: "Good to know",
     cards: {
       permaculture: {
         title: "Permaculture",
         description:
           "Self-sufficient systems designed in harmony with the land — growing food, restoring soil and nurturing biodiversity.",
+        detail: {
+          intro:
+            "Our permaculture zones are living laboratories where food forests, compost systems and water harvesting work together. Visitors walk through layered plantings, observe soil regeneration in action and see how closed-loop design keeps the sanctuary productive year-round.",
+          highlights: [
+            "Food forests with native and edible species",
+            "Composting and soil restoration workshops",
+            "Rainwater capture and greywater reuse",
+            "Medicinal plant gardens and pollinator corridors",
+          ],
+          experiences: [
+            {
+              title: "Guided farm walk",
+              description:
+                "A slow tour through our growing zones with practical explanations of how each element supports the next.",
+            },
+            {
+              title: "Hands-on planting",
+              description:
+                "Help prepare beds, transplant seedlings or mulch paths alongside our land stewards.",
+            },
+            {
+              title: "Harvest & taste",
+              description:
+                "Sample seasonal produce picked the same day from beds designed for flavour and resilience.",
+            },
+          ],
+          visitNote:
+            "Wear comfortable shoes and light layers. Morning visits are best for cooler temperatures and active farm work.",
+        },
       },
       aquaculture: {
         title: "Aquaculture",
         description:
           "Fresh tilapia and aquatic species cultivated in controlled, sustainable environments.",
+        detail: {
+          intro:
+            "Jungle Fish runs integrated aquaculture systems where tilapia ponds connect to the wider ecosystem. Water circulates through carefully managed pools, supporting fish health while feeding adjacent gardens and reducing waste across the sanctuary.",
+          highlights: [
+            "Fresh tilapia raised on-site",
+            "Pond-to-plate supply for the restaurant",
+            "Water recycling between ponds and gardens",
+            "Introductory sessions on sustainable fish farming",
+          ],
+          experiences: [
+            {
+              title: "Pond overview",
+              description:
+                "Learn how our tilapia systems are designed for tropical conditions and steady production.",
+            },
+            {
+              title: "Feeding & monitoring",
+              description:
+                "See daily routines that keep water quality stable and fish growth healthy.",
+            },
+            {
+              title: "Kitchen connection",
+              description:
+                "Follow the path from pond to plate and taste how freshness changes the menu.",
+            },
+          ],
+          visitNote:
+            "Pond areas can be humid and sunny. Bring a hat and water. Children are welcome with adult supervision near water.",
+        },
       },
       accommodation: {
         title: "Accommodation",
         description:
           "Cabins and relaxation spaces to unwind, breathe and stay immersed in the environment.",
+        detail: {
+          intro:
+            "Stay surrounded by jungle sounds, open air and unhurried rhythms. Our cabins and rest areas are designed for guests who want comfort without losing contact with the land — simple spaces, natural materials and quiet mornings before the sanctuary comes alive.",
+          highlights: [
+            "Cabins immersed in greenery",
+            "Shared relaxation and social areas",
+            "Access to trails, ponds and workshop spaces",
+            "Ideal base for multi-day eco-experiences",
+          ],
+          experiences: [
+            {
+              title: "Nature-forward rooms",
+              description:
+                "Wake to birdsong and forest light in spaces built to stay cool and connected to the outdoors.",
+            },
+            {
+              title: "Slow mornings",
+              description:
+                "Enjoy coffee near the gardens before exploring permaculture, aquaculture or educational programs.",
+            },
+            {
+              title: "Evening calm",
+              description:
+                "Unwind after farm walks and workshops in quiet common areas designed for rest.",
+            },
+          ],
+          visitNote:
+            "Availability varies by season. Contact us ahead of your visit to confirm cabins and group arrangements.",
+        },
       },
       book: {
         title: "The Seven Books of Jungle Fish",
         description:
           "A comprehensive guide to reconnecting with nature's rhythms through regenerative design, medicinal plants and the art of closed-loop tropical living.",
+        detail: {
+          intro:
+            "The Seven Books of Jungle Fish is our framework for living well in the tropics — a set of principles covering land, water, food, community, health, economy and spirit. On-site sessions introduce the ideas behind each book and how they shape every project at the sanctuary.",
+          highlights: [
+            "Seven thematic volumes on regenerative living",
+            "Medicinal plants and traditional knowledge",
+            "Closed-loop design for tropical climates",
+            "Discussion circles with visitors and locals",
+          ],
+          experiences: [
+            {
+              title: "Book overview sessions",
+              description:
+                "Introductory talks that map each volume to real practices you can see across the property.",
+            },
+            {
+              title: "Medicinal plant walks",
+              description:
+                "Identify useful species and learn how they fit into daily health and land care.",
+            },
+            {
+              title: "Reflection & journaling",
+              description:
+                "Quiet time to connect the ideas to your own relationship with nature and community.",
+            },
+          ],
+          visitNote:
+            "No prior reading is required. Sessions are conversational and suited to curious first-time visitors.",
+        },
       },
       freshFood: {
         title: "Fresh Food",
         description:
           "Tilapia and local produce served straight from our sustainable systems.",
+        detail: {
+          intro:
+            "The restaurant and bar at Jungle Fish showcase what the land and ponds produce each week. Menus shift with harvests — tilapia from our aquaculture, greens from permaculture beds and regional ingredients prepared with a light, fresh touch.",
+          highlights: [
+            "Tilapia sourced from on-site ponds",
+            "Seasonal produce from permaculture beds",
+            "Restaurant and bar open to visitors",
+            "Dishes rooted in Costa Rican flavours",
+          ],
+          experiences: [
+            {
+              title: "Farm-to-table dining",
+              description:
+                "Eat knowing the main ingredients travelled only a few metres from pond or garden to kitchen.",
+            },
+            {
+              title: "Chef's seasonal picks",
+              description:
+                "Ask what's fresh that day — the menu reflects what the sanctuary is harvesting now.",
+            },
+            {
+              title: "Drinks at the bar",
+              description:
+                "Relax with refreshments after workshops or trail walks in our open-air social space.",
+            },
+          ],
+          visitNote:
+            "Kitchen hours may vary. Reach out before your visit for same-day dining and group reservations.",
+        },
       },
       education: {
         title: "Educational Visits",
         description:
           "Learn about sustainability, ecology and living in balance with nature.",
+        detail: {
+          intro:
+            "Educational visits bring students, families and curious travellers into direct contact with regenerative practices. Programs combine short talks, guided observation and hands-on activities suited to schools, universities and informal learning groups.",
+          highlights: [
+            "School and university group programs",
+            "Ecology and sustainability introductions",
+            "Hands-on activities across farm and ponds",
+            "Weekly themes tied to sanctuary projects",
+          ],
+          experiences: [
+            {
+              title: "Field introductions",
+              description:
+                "Age-appropriate overviews of permaculture, aquaculture and community land care.",
+            },
+            {
+              title: "Interactive stations",
+              description:
+                "Rotate through practical demonstrations on soil, water, plants and food systems.",
+            },
+            {
+              title: "Q&A with stewards",
+              description:
+                "Talk with people who manage the land daily and hear how projects evolve over seasons.",
+            },
+          ],
+          visitNote:
+            "Groups should book in advance. We can tailor session length and focus for schools or special interests.",
+        },
       },
     },
   },
