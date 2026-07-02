@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
 
 const BENEFIT_ICONS = ["💰", "🏷️", "🎁", "🌿"];
@@ -74,8 +75,8 @@ export function MtbSection() {
             </div>
 
             {/* CTA Button */}
-            <a
-              href="#payments"
+            <Link
+              href="/registro"
               className="group inline-flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 px-8 py-4 text-base font-bold text-white shadow-lg shadow-emerald-500/25 transition-all duration-300 hover:from-emerald-400 hover:to-teal-400 hover:shadow-emerald-500/40 hover:scale-[1.02] sm:w-auto"
             >
               <span>👉</span>
@@ -90,7 +91,7 @@ export function MtbSection() {
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </a>
+            </Link>
           </div>
 
           {/* RIGHT — Image + floating token icon */}
