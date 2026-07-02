@@ -8,9 +8,16 @@ import Image from "next/image";
 const SINPE_PHONE = "XXXX-XXXX"; // ← reemplaza con tu número real
 const USDC_WALLET = "GXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"; // ← reemplaza con tu ID real
 const MTB_PRICE_USD = 35; // precio de la inscripción
+const STRIPE_LINK = "https://buy.stripe.com/mock_link"; // ← reemplaza con tu link de pago de Stripe
+const MONEYGRAM_INFO = {
+  name: "Isaac Camacho Navarro",
+  id: "1-XXXX-XXXX", // Cédula o ID del receptor
+  country: "Costa Rica",
+  city: "San Isidro del General",
+};
 
 // ─── Types ────────────────────────────────────────────────────────────────────
-type PaymentMethod = "sinpe" | "transfer" | "usdc" | null;
+type PaymentMethod = "sinpe" | "transfer" | "usdc" | "stripe" | "moneygram" | null;
 type Step = 1 | 2 | 3 | 4;
 
 // ─── Step indicator ──────────────────────────────────────────────────────────
@@ -110,20 +117,18 @@ export function MtbRegistrationWizard() {
 
   const canProceedStep1 = method !== null;
   const canProceedStep2 =
-    method === "sinpe"
+    method === "sinpe" || method === "transfer" || method === "moneygram"
       ? proofFile !== null
-      : method === "transfer"
-      ? proofFile !== null
-      : true; // USDC: no proof needed here
+      : true; // USDC and Stripe don't require an uploaded proof file here
   const canProceedStep3 = email.includes("@") && email.includes(".");
   const canProceedStep4 = jfishWallet.trim().length > 10;
 
-  // For USDC the flow is: step1 (method) → step2 (show our wallet + they pay) → step3 (collect their wallet) → step4 (confirm)
-  // For SINPE/transfer: step1 → step2 (upload proof) → step3 (email) → step4 (confirm)
-
+  // Flow labels based on method
   const stepLabels =
     method === "usdc"
       ? ["Método de pago", "Realizar pago", "Tu billetera", "Confirmación"]
+      : method === "stripe"
+      ? ["Método de pago", "Pagar en línea", "Tu correo", "Confirmación"]
       : ["Método de pago", "Comprobante", "Tu correo", "Confirmación"];
 
   return (
@@ -182,10 +187,18 @@ export function MtbRegistrationWizard() {
                 ¿Cómo vas a pagar?
               </h2>
               <MethodCard
+                id="stripe"
+                icon="💳"
+                label="Tarjeta (Stripe)"
+                sub="Pago seguro en línea con tarjeta de crédito o débito"
+                selected={method === "stripe"}
+                onClick={() => setMethod("stripe")}
+              />
+              <MethodCard
                 id="sinpe"
                 icon="📱"
                 label="SINPE Móvil"
-                sub="Transferencia instantánea desde tu app bancaria"
+                sub="Transferencia instantánea desde tu app bancaria (Costa Rica)"
                 selected={method === "sinpe"}
                 onClick={() => setMethod("sinpe")}
               />
@@ -205,16 +218,26 @@ export function MtbRegistrationWizard() {
                 selected={method === "usdc"}
                 onClick={() => setMethod("usdc")}
               />
+              <MethodCard
+                id="moneygram"
+                icon="💵"
+                label="MoneyGram"
+                sub="Envío internacional de efectivo a persona"
+                selected={method === "moneygram"}
+                onClick={() => setMethod("moneygram")}
+              />
             </div>
           )}
 
-          {/* ── STEP 2a: SINPE / Transfer — upload proof ────────────────── */}
-          {step === 2 && (method === "sinpe" || method === "transfer") && (
+          {/* ── STEP 2a: SINPE / Transfer / MoneyGram — upload proof ────────── */}
+          {step === 2 && (method === "sinpe" || method === "transfer" || method === "moneygram") && (
             <div className="space-y-6">
               <h2 className="text-xl font-bold text-white">
                 {method === "sinpe"
                   ? "Realiza el SINPE Móvil"
-                  : "Realiza la transferencia bancaria"}
+                  : method === "transfer"
+                  ? "Realiza la transferencia bancaria"
+                  : "Envía el dinero por MoneyGram"}
               </h2>
 
               {/* Payment info box */}
@@ -231,7 +254,7 @@ export function MtbRegistrationWizard() {
                       Monto: ${MTB_PRICE_USD} USD (equivalente en colones al tipo de cambio del día)
                     </p>
                   </>
-                ) : (
+                ) : method === "transfer" ? (
                   <>
                     <p className="text-sm font-semibold uppercase tracking-wider text-emerald-400">
                       Datos para transferencia
@@ -243,11 +266,24 @@ export function MtbRegistrationWizard() {
                       <p><span className="text-slate-400">Monto:</span> ${MTB_PRICE_USD} USD</p>
                     </div>
                   </>
+                ) : (
+                  <>
+                    <p className="text-sm font-semibold uppercase tracking-wider text-emerald-400">
+                      Datos para el envío de MoneyGram
+                    </p>
+                    <div className="mt-3 space-y-1 text-sm text-white">
+                      <p><span className="text-slate-400">Receptor:</span> {MONEYGRAM_INFO.name}</p>
+                      <p><span className="text-slate-400">ID / Cédula:</span> {MONEYGRAM_INFO.id}</p>
+                      <p><span className="text-slate-400">País:</span> {MONEYGRAM_INFO.country}</p>
+                      <p><span className="text-slate-400">Ciudad:</span> {MONEYGRAM_INFO.city}</p>
+                      <p><span className="text-slate-400">Monto:</span> ${MTB_PRICE_USD} USD</p>
+                    </div>
+                  </>
                 )}
               </div>
 
               <p className="text-sm text-slate-400">
-                Una vez realizado el pago, adjunta el comprobante (foto o captura de pantalla):
+                Una vez realizado el pago, adjunta el comprobante de envío (foto o captura de pantalla):
               </p>
 
               {/* File upload */}
@@ -331,8 +367,50 @@ export function MtbRegistrationWizard() {
             </div>
           )}
 
-          {/* ── STEP 3a: Email (SINPE / transfer) ────────────────────────── */}
-          {step === 3 && (method === "sinpe" || method === "transfer") && (
+          {/* ── STEP 2c: Stripe — card payment button ─────────────────────────── */}
+          {step === 2 && method === "stripe" && (
+            <div className="space-y-6">
+              <h2 className="text-xl font-bold text-white">
+                Paga de forma segura con Stripe
+              </h2>
+              <p className="text-sm text-slate-400">
+                Usa el siguiente enlace para realizar el pago de{" "}
+                <span className="font-bold text-white">${MTB_PRICE_USD} USD</span>{" "}
+                con tarjeta de crédito o débito a través de la plataforma segura de Stripe.
+              </p>
+
+              {/* Stripe Link Button */}
+              <div className="flex justify-center py-6">
+                <a
+                  href={STRIPE_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-3 rounded-2xl bg-[#635bff] px-8 py-4 text-base font-bold text-white shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:bg-[#7a73ff] hover:scale-[1.02] hover:shadow-indigo-500/40"
+                >
+                  💳 Pagar con Tarjeta (Stripe)
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+
+              <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-5">
+                <p className="text-sm text-emerald-200">
+                  ℹ️ **Nota:** Una vez completado el pago en Stripe, regresa a esta página y presiona **Continuar** para ingresar tu correo y recibir tu entrada.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* ── STEP 3a: Email (SINPE / transfer / moneygram / stripe) ───────── */}
+          {step === 3 && (method === "sinpe" || method === "transfer" || method === "moneygram" || method === "stripe") && (
             <div className="space-y-6">
               <h2 className="text-xl font-bold text-white">
                 ¿A dónde enviamos tu entrada?
@@ -439,12 +517,16 @@ export function MtbRegistrationWizard() {
                   <div className="rounded-2xl border border-white/10 bg-white/5 p-5 text-left space-y-3">
                     <div className="flex justify-between text-sm">
                       <span className="text-slate-400">Método de pago</span>
-                      <span className="font-semibold text-white capitalize">
+                      <span className="font-semibold text-white">
                         {method === "sinpe"
                           ? "SINPE Móvil"
                           : method === "transfer"
                           ? "Transferencia Bancaria"
-                          : "USDC"}
+                          : method === "usdc"
+                          ? "USDC"
+                          : method === "stripe"
+                          ? "Tarjeta (Stripe)"
+                          : "MoneyGram"}
                       </span>
                     </div>
                     {proofFile && (
