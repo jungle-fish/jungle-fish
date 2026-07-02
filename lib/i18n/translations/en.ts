@@ -6,9 +6,8 @@ const en = {
   },
   nav: {
     about: "About",
-    jfish: "$JFISH",
     payments: "Payments",
-    stronghold: "Stronghold",
+    mtb: "MTB Competition",
     visit: "Visit Us",
     volunteer: "Volunteer",
   },
@@ -18,7 +17,7 @@ const en = {
     subtitle:
       "Jungle Fish is a space where permaculture, aquaculture and outdoor experiences come together — fresh, organic and alive.",
     ctaPrimary: "Explore experiences",
-    ctaSecondary: "Discover $JFISH",
+    ctaSecondary: "MTB Competition",
   },
   about: {
     eyebrow: "About us",
@@ -409,6 +408,39 @@ const en = {
     facebook: "Facebook",
     instagram: "Instagram",
     x: "X",
+  },
+  mtb: {
+    eyebrow: "Much More Than a Race!",
+    title: "Pedal, Win & Live the $JFISH Experience",
+    description:
+      "Ready for the real Mountain Bike of the future? Here you don’t just come to give it your all on the trail; you come to be part of an ecosystem that rewards your effort from the very first second. By securing your spot, your registration becomes the engine of your weekend.",
+    benefitsTitle: "🔥 What your smart registration includes:",
+    benefits: [
+      {
+        title: "Real Balance in Your Wallet ($JFISH)",
+        description:
+          "When you buy your race ticket, you automatically receive a percentage of your registration in $JFISH tokens directly in your digital wallet. Money ready to use!",
+      },
+      {
+        title: "Ecosystem of Exclusive Discounts",
+        description:
+          "Use your tokens at the best allied eco-tourism hotels, restaurants, and shops in the area. Get up to 15% immediate discount or special cashbacks when paying with your phone.",
+      },
+      {
+        title: "Dynamics and Gifts Along the Route",
+        description:
+          "Want more tokens? Local businesses will give you more $JFISH just for visiting them, posting a story on Instagram, or leaving a 5-star Google Maps review. Your experience pays for itself!",
+      },
+      {
+        title: "Triple Tourism",
+        description:
+          "Enjoy an event that unites extreme sport, the local natural environment, and the most advanced financial technology in Costa Rica.",
+      },
+    ],
+    urgencyTitle: "⚡ Don’t miss the starting line!",
+    urgencyText:
+      "Spots are limited. Secure your kit, download your digital wallet, and get ready to ride the most technological and exciting circuit of the year.",
+    cta: "Secure My Spot & My Tokens",
   },
   language: {
     en: "English",

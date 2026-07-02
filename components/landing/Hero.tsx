@@ -91,7 +91,7 @@ function HeroContent() {
             <Button href="#about" variant="primary" size="lg">
               {t.hero.ctaPrimary}
             </Button>
-            <Button href="#jfish" variant="outline" size="lg">
+            <Button href="#mtb" variant="outline" size="lg">
               {t.hero.ctaSecondary}
             </Button>
           </motion.div>

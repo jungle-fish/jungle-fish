@@ -8,9 +8,8 @@ const es: TranslationDictionary = {
   },
   nav: {
     about: "Nosotros",
-    jfish: "$JFISH",
     payments: "Pagos",
-    stronghold: "Stronghold",
+    mtb: "Competencia MTB",
     visit: "Visítanos",
     volunteer: "Voluntariado",
   },
@@ -20,7 +19,7 @@ const es: TranslationDictionary = {
     subtitle:
       "Jungle Fish es un espacio donde la permacultura, la acuacultura y las experiencias al aire libre se unen — fresco, orgánico y vivo.",
     ctaPrimary: "Explorar experiencias",
-    ctaSecondary: "Descubrir $JFISH",
+    ctaSecondary: "Competencia MTB",
   },
   about: {
     eyebrow: "¿Quienes somos?",
@@ -415,6 +414,39 @@ const es: TranslationDictionary = {
     facebook: "Facebook",
     instagram: "Instagram",
     x: "X",
+  },
+  mtb: {
+    eyebrow: "¡Mucho Más Que Una Carrera!",
+    title: "Pedalea, Gana y Vive la Experiencia $JFISH",
+    description:
+      "¿Listo para el verdadero Mountain Bike del futuro? Aquí no solo vienes a darlo todo en la pista; vienes a formar parte de un ecosistema que premia tu esfuerzo desde el primer segundo. Al asegurar tu campo, tu inscripción se convierte en el motor de tu fin de semana.",
+    benefitsTitle: "🔥 Lo que incluye tu inscripción inteligente:",
+    benefits: [
+      {
+        title: "Saldo Real en tu Billetera ($JFISH)",
+        description:
+          "Con la compra de tu ticket de carrera, recibes de forma automática un porcentaje de tu inscripción en tokens $JFISH directo en tu billetera digital. ¡Dinero listo para usar!",
+      },
+      {
+        title: "Ecosistema de Descuentos Exclusivos",
+        description:
+          "Usa tus tokens en los mejores hoteles, restaurantes y comercios eco-turísticos aliados de la zona. Obtén hasta un 15% de descuento inmediato o cashbacks especiales al pagar con tu celular.",
+      },
+      {
+        title: "Dinámicas y Regalos en Ruta",
+        description:
+          "¿Quieres más tokens? Los comercios locales te regalarán más $JFISH solo por visitarlos, subir una historia a Instagram o dejarles un review de 5 estrellas en Google Maps. ¡Tu experiencia se paga sola!",
+      },
+      {
+        title: "Turismo Triple",
+        description:
+          "Disfruta de un evento que une el deporte rudo, la naturaleza de la zona y la tecnología financiera más avanzada de Costa Rica.",
+      },
+    ],
+    urgencyTitle: "⚡ ¡No te quedes fuera de la línea de salida!",
+    urgencyText:
+      "Las inscripciones son limitadas. Asegura tu kit, descarga tu billetera digital y prepárate para pedalear en el circuito más tecnológico y emocionante del año.",
+    cta: "Asegurar Mi Campo y Mis Tokens",
   },
   language: {
     en: "English",

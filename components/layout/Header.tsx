@@ -12,18 +12,16 @@ import { useLanguage } from "@/lib/i18n/LanguageProvider";
 
 const SECTION_IDS = [
   "about",
+  "mtb",
   "payments",
-  "jfish",
-  "stronghold",
   "volunteer",
   "visit",
 ] as const;
 
 const navLinks = [
   { href: "/#about", key: "about" as const, sectionId: "about" },
+  { href: "/#mtb", key: "mtb" as const, sectionId: "mtb" },
   { href: "/#payments", key: "payments" as const, sectionId: "payments" },
-  { href: "/#jfish", key: "jfish" as const, sectionId: "jfish" },
-  { href: "/#stronghold", key: "stronghold" as const, sectionId: "stronghold" },
   { href: "/#volunteer", key: "volunteer" as const, sectionId: "volunteer" },
 ];
 
