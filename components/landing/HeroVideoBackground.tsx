@@ -197,7 +197,7 @@ export function HeroVideoBackground({ y, scale }: HeroVideoBackgroundProps) {
         fill
         priority
         className="object-cover"
-        style={{ objectPosition: "30% 70%" }}
+        style={{ objectPosition: "30% 60%" }}
         onLoad={handleVideoCanPlay}
       />
 
