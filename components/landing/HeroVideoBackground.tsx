@@ -196,7 +196,7 @@ export function HeroVideoBackground({ y, scale }: HeroVideoBackgroundProps) {
         alt="Jungle Fish background"
         fill
         priority
-        className="object-cover"
+        className="object-cover object-bottom"
         onLoad={handleVideoCanPlay}
       />
 
