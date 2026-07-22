@@ -139,37 +139,23 @@ const es: TranslationDictionary = {
         },
       },
       book: {
-        title: "Los Siete Libros de Jungle Fish",
+        title: "The Jungle Fish Book Series",
         description:
-          "Una guía integral para reconectar con los ritmos de la naturaleza mediante diseño regenerativo, plantas medicinales y el arte de vivir en circuito cerrado en el trópico.",
+          "Una colección de seis volúmenes que explora cómo la tierra, el agua, la comida, las plantas, la memoria y la comunidad se unen en el bosque tropical. El primer volumen, Viviendo con la Naturaleza, está próximo a completarse.",
         detail: {
           intro:
-            "Los Siete Libros de Jungle Fish son nuestro marco para vivir bien en el trópico — un conjunto de principios sobre tierra, agua, alimento, comunidad, salud, economía y espíritu. Las sesiones en el lugar presentan las ideas detrás de cada libro y cómo orientan cada proyecto del santuario.",
+            "The Jungle Fish Book Series es una colección en evolución inspirada por la tierra, el agua, los sistemas alimentarios, los conocimientos y las historias que rodean a Jungle Fish en Costa Rica.",
           highlights: [
-            "Siete volúmenes temáticos sobre vida regenerativa",
-            "Plantas medicinales y saberes tradicionales",
-            "Diseño en circuito cerrado para climas tropicales",
-            "Círculos de conversación con visitantes y locales",
+            "Volumen I — Viviendo con la Naturaleza (Próximo a completarse)",
+            "Volumen II — La Farmacia Viva (En investigación y desarrollo)",
+            "Volumen III — Acuacultura (En investigación y documentación)",
+            "Volumen IV — Batidos, Café y Delicias (En desarrollo temprano)",
+            "Volumen V — Recetas de los Abuelos (Investigación de campo planificada)",
+            "Volumen VI — La Memoria de esta Tierra (Etapa de concepto e investigación)",
           ],
-          experiences: [
-            {
-              title: "Sesiones de introducción",
-              description:
-                "Charlas iniciales que vinculan cada volumen con prácticas reales visibles en la propiedad.",
-            },
-            {
-              title: "Caminatas de plantas medicinales",
-              description:
-                "Identifica especies útiles y aprende cómo encajan en la salud diaria y el cuidado del terreno.",
-            },
-            {
-              title: "Reflexión y bitácora",
-              description:
-                "Tiempo tranquilo para conectar las ideas con tu propia relación con la naturaleza y la comunidad.",
-            },
-          ],
+          experiences: [],
           visitNote:
-            "No se requiere lectura previa. Las sesiones son conversacionales y aptas para visitantes curiosos por primera vez.",
+            "Los libros se basan en observaciones, prácticas e historias conectadas con Jungle Fish. A medida que la serie se desarrolle, ideas seleccionadas también podrán inspirar futuras caminatas, charlas y experiencias de aprendizaje en la propiedad.",
         },
       },
       freshFood: {

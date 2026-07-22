@@ -137,37 +137,23 @@ const en = {
         },
       },
       book: {
-        title: "The Seven Books of Jungle Fish",
+        title: "The Jungle Fish Book Series",
         description:
-          "A comprehensive guide to reconnecting with nature's rhythms through regenerative design, medicinal plants and the art of closed-loop tropical living.",
+          "A six-volume collection exploring how land, water, food, plants, memory and community come together in the tropical forest. The first book, Living with Nature, is nearing completion.",
         detail: {
           intro:
-            "The Seven Books of Jungle Fish is our framework for living well in the tropics — a set of principles covering land, water, food, community, health, economy and spirit. On-site sessions introduce the ideas behind each book and how they shape every project at the sanctuary.",
+            "The Jungle Fish Book Series is an evolving collection inspired by the land, water, food systems, knowledge and stories surrounding Jungle Fish in Costa Rica.",
           highlights: [
-            "Seven thematic volumes on regenerative living",
-            "Medicinal plants and traditional knowledge",
-            "Closed-loop design for tropical climates",
-            "Discussion circles with visitors and locals",
+            "Volume I — Living with Nature (Nearing completion)",
+            "Volume II — The Living Pharmacy (In research and development)",
+            "Volume III — Aquaculture (In research and documentation)",
+            "Volume IV — Smoothies, Coffee & Treats (In early development)",
+            "Volume V — Grandpa & Grandma Recipes (Field research planned)",
+            "Volume VI — The Memory of This Land (Concept and research stage)",
           ],
-          experiences: [
-            {
-              title: "Book overview sessions",
-              description:
-                "Introductory talks that map each volume to real practices you can see across the property.",
-            },
-            {
-              title: "Medicinal plant walks",
-              description:
-                "Identify useful species and learn how they fit into daily health and land care.",
-            },
-            {
-              title: "Reflection & journaling",
-              description:
-                "Quiet time to connect the ideas to your own relationship with nature and community.",
-            },
-          ],
+          experiences: [],
           visitNote:
-            "No prior reading is required. Sessions are conversational and suited to curious first-time visitors.",
+            "The books are shaped by observations, practices and stories connected to Jungle Fish. As the series develops, selected ideas may also inspire future walks, talks and learning experiences on the property.",
         },
       },
       freshFood: {

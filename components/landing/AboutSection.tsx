@@ -9,7 +9,7 @@ import { FallingLeaves } from "@/components/motion/FallingLeaves";
 import { aboutCards, getAboutCardHref } from "@/lib/about/cards";
 
 export function AboutSection() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
 
   const availableCards = aboutCards.filter((card) => card.category === "available");
   const growingCards = aboutCards.filter((card) => card.category === "growing");
@@ -46,7 +46,10 @@ export function AboutSection() {
                     description={card.description}
                     accent={accent}
                     href={getAboutCardHref(slug)}
-                    linkLabel={t.about.cardCta}
+                    linkLabel={slug === "book"
+                      ? (locale === "es" ? "Descubrir Volumen I →" : "Discover Volume I →")
+                      : t.about.cardCta
+                    }
                     cloudinaryId={cloudinaryId}
                     imageSrc={imageSrc}
                     icon={
