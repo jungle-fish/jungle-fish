@@ -28,6 +28,7 @@ export type AboutCardConfig = {
   accent: AboutCardAccent;
   cloudinaryId?: CloudImageId;
   imageSrc?: string;
+  category: "available" | "growing";
 };
 
 export const aboutCards: readonly AboutCardConfig[] = [
@@ -37,6 +38,7 @@ export const aboutCards: readonly AboutCardConfig[] = [
     iconSrc: "/icons/icon_permaculture.webp",
     accent: "green",
     cloudinaryId: CLOUD_IMAGE.permaculture,
+    category: "growing",
   },
   {
     key: "aquaculture",
@@ -44,6 +46,7 @@ export const aboutCards: readonly AboutCardConfig[] = [
     iconSrc: "/icons/icon_fish.webp",
     accent: "lagoon",
     imageSrc: "/acuacultura.webp",
+    category: "available",
   },
   {
     key: "accommodation",
@@ -51,6 +54,7 @@ export const aboutCards: readonly AboutCardConfig[] = [
     iconSrc: "/icons/icon_house.webp",
     accent: "earth",
     imageSrc: "/hospedaje.webp",
+    category: "growing",
   },
   {
     key: "book",
@@ -58,6 +62,7 @@ export const aboutCards: readonly AboutCardConfig[] = [
     iconSrc: "/icons/icon_bookleaf.webp",
     accent: "sand",
     imageSrc: "/libros.webp",
+    category: "available",
   },
   {
     key: "freshFood",
@@ -65,6 +70,7 @@ export const aboutCards: readonly AboutCardConfig[] = [
     iconSrc: "/icons/icon_humburger.webp",
     accent: "sand",
     imageSrc: "/comida-fresca.webp",
+    category: "available",
   },
   {
     key: "education",
@@ -72,6 +78,7 @@ export const aboutCards: readonly AboutCardConfig[] = [
     iconSrc: "/icons/icon_mountain.webp",
     accent: "green",
     imageSrc: "/visitas-educativas.webp",
+    category: "growing",
   },
 ] as const;
 

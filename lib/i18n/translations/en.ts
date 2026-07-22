@@ -29,6 +29,10 @@ const en = {
     cardCta: "Learn more",
     experienceTitle: "What you'll experience",
     visitNoteTitle: "Good to know",
+    availableTitle: "Available Now",
+    availableSubtitle: "Everything that already exists and you can visit or experience today.",
+    growingTitle: "Growing at Jungle Fish",
+    growingSubtitle: "Future projects and growing areas that we are actively building.",
     cards: {
       permaculture: {
         title: "Permaculture",

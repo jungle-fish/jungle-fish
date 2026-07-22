@@ -31,6 +31,10 @@ const es: TranslationDictionary = {
     cardCta: "Saber más",
     experienceTitle: "Lo que vivirás",
     visitNoteTitle: "Bueno saber",
+    availableTitle: "Actualmente disponible",
+    availableSubtitle: "Todo lo que ya existe y puedes visitar o vivir hoy.",
+    growingTitle: "En desarrollo en Jungle Fish",
+    growingSubtitle: "Proyectos y áreas en crecimiento que estamos construyendo.",
     cards: {
       permaculture: {
         title: "Permacultura",
