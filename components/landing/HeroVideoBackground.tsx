@@ -1,14 +1,13 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import {
   motion,
   type MotionValue,
   useAnimationControls,
 } from "framer-motion";
-import { CloudinaryBackgroundVideo } from "@/components/landing/CloudinaryBackgroundVideo";
 import { useHeroIntro } from "@/components/landing/HeroIntroContext";
-import { CLOUD_VIDEO } from "@/lib/media";
 
 const VIDEO_LOAD_TIMEOUT_MS = 5_000;
 const MIN_BRAND_IDLE_MS = 350;
@@ -192,12 +191,13 @@ export function HeroVideoBackground({ y, scale }: HeroVideoBackgroundProps) {
         aria-hidden
       />
 
-      <CloudinaryBackgroundVideo
-        publicId={CLOUD_VIDEO.background}
-        className="absolute inset-0 overflow-hidden"
-        enabled={mounted && videoAllowed}
-        onCanPlay={handleVideoCanPlay}
-        title="Jungle Fish background video"
+      <Image
+        src="/home.webp"
+        alt="Jungle Fish background"
+        fill
+        priority
+        className="object-cover"
+        onLoad={handleVideoCanPlay}
       />
 
       <motion.div
