@@ -388,6 +388,11 @@ const en = {
       "Spots are limited. Secure your kit, download your digital wallet, and get ready to ride the most technological and exciting circuit of the year.",
     cta: "Secure My Spot & My Tokens",
   },
+  mtbTransition: {
+    nature: "Nature",
+    adrenaline: "Adrenaline",
+    technology: "Technology",
+  },
   language: {
     en: "English",
     es: "Español",

@@ -394,6 +394,11 @@ const es: TranslationDictionary = {
       "Las inscripciones son limitadas. Asegura tu kit, descarga tu billetera digital y prepárate para pedalear en el circuito más tecnológico y emocionante del año.",
     cta: "Asegurar Mi Campo y Mis Tokens",
   },
+  mtbTransition: {
+    nature: "Naturaleza",
+    adrenaline: "Adrenalina",
+    technology: "Tecnología",
+  },
   language: {
     en: "English",
     es: "Español",

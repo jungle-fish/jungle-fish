@@ -3,6 +3,7 @@ import { FinalCTASection } from "@/components/landing/FinalCTASection";
 import { VolunteerSection } from "@/components/landing/VolunteerSection";
 import { Hero } from "@/components/landing/Hero";
 import { MtbSection } from "@/components/landing/MtbSection";
+import { MtbTransitionPortal } from "@/components/landing/MtbTransitionPortal";
 import { PaymentSection } from "@/components/landing/PaymentSection";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
@@ -17,6 +18,7 @@ export function LandingPage() {
         <SectionReveal variant="fromLeft">
           <AboutSection />
         </SectionReveal>
+        <MtbTransitionPortal />
         <SectionReveal variant="fadeUp">
           <MtbSection />
         </SectionReveal>
