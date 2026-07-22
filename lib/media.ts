@@ -11,7 +11,6 @@ export const CLOUD_IMAGE = {
   freshFood: "image_food_gmkvm6",
   education: "image_children_sc28mb",
   drawnLake: "image_drawn_lake_yignkr",
-  strongholdIcon: "icon_stronghold_qnzpvi",
 } as const;
 
 export type CloudVideoId = (typeof CLOUD_VIDEO)[keyof typeof CLOUD_VIDEO];

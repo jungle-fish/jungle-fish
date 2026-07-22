@@ -160,24 +160,6 @@ export function PaymentSection() {
               );
             })}
           </div>
-
-          <div className="mt-8 rounded-2xl border border-white/15 bg-white/5 px-6 py-8 text-center sm:mt-10 sm:px-10 sm:py-10">
-            <CldImage
-              src={CLOUD_IMAGE.strongholdIcon}
-              alt="Stronghold"
-              width={200}
-              height={64}
-              quality="auto"
-              format="auto"
-              className="mx-auto h-10 w-auto object-contain sm:h-14"
-            />
-            <p className="mt-4 font-display text-3xl font-semibold tracking-tight text-white sm:mt-5 sm:text-4xl lg:text-5xl">
-              {t.payments.strongholdBadge}
-            </p>
-            <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-jungle-100 sm:text-base lg:text-lg">
-              {t.payments.stronghold}
-            </p>
-          </div>
         </PaymentPanel>
       </FadeIn>
     </Section>

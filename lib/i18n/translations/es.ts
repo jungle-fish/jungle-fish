@@ -296,66 +296,8 @@ const es: TranslationDictionary = {
           "Nuestro token nativo para recompensas y pagos del ecosistema.",
       },
     },
-    strongholdBadge: "Impulsado por Stronghold",
     traditionalEyebrow: "Pagos en el lugar",
     cryptoEyebrow: "Pagos digitales y cripto",
-    stronghold:
-      "Infraestructura segura que habilita pagos con criptomonedas en el lugar — confiable, fluida y diseñada para no interponerse en tu experiencia.",
-  },
-  stronghold: {
-    eyebrow: "Infraestructura de pagos",
-    title: "Cómo trabajamos con Stronghold",
-    description:
-      "Stronghold Pay conecta la tecnología blockchain con el comercio real en nuestro ecosantuario — ofreciendo a visitantes y comerciantes locales una forma práctica de pagar y cobrar digitalmente.",
-    badge: "Implementación en el santuario",
-    intro:
-      "Stronghold es la infraestructura financiera detrás del sistema híbrido de pagos de Jungle Fish. El plan es reducir la dependencia de las costosas tarifas de terminales punto de venta tradicionales, ofreciendo checkout digital directo en nuestros puntos físicos — comenzando por el restaurante y el bar.",
-    pillars: {
-      onsite: {
-        title: "Pagos QR en el lugar",
-        description:
-          "Códigos QR dedicados de Stronghold operarán junto a los QR del token $JFISH en los puntos de venta. Juntos crean una vía de pago paralela y fluida para turistas internacionales y visitantes locales que prefieren pagar digitalmente.",
-      },
-      regional: {
-        title: "Red en el Zona Sur",
-        description:
-          "Jungle Fish también busca impulsar la adopción en la Zona Sur de Costa Rica — de Pérez Zeledón a Uvita. La visión es integrar emprendedores regionales a la red Stronghold para que pequeñas y medianas empresas procesen transacciones con tarifas mínimas y sean más competitivas.",
-      },
-      education: {
-        title: "Talleres comunitarios",
-        description:
-          "La tecnología de pagos forma parte de nuestro programa educativo. Eventos semanales planificados en el santuario enseñarán a comerciantes y a la comunidad cómo configurar cuentas de comercio Stronghold y comprender las herramientas del comercio digital moderno.",
-      },
-    },
-    flowTitle: "Qué significa en la práctica",
-    flowSteps: [
-      {
-        label: "Escanea al pagar",
-        description:
-          "Usa un código QR de Stronghold o $JFISH en el restaurante, bar u otros puntos de venta del sitio.",
-      },
-      {
-        label: "Paga digitalmente",
-        description:
-          "Completa tu compra con Stronghold Pay — una opción directa diseñada para evitar la fricción y las tarifas de terminales convencionales en pagos con cripto.",
-      },
-      {
-        label: "Apoya el crecimiento local",
-        description:
-          "A medida que la red se expanda regionalmente, rieles digitales de bajo costo pueden ayudar a los negocios locales a retener más de lo que ganan.",
-      },
-    ],
-    workshopTitle: "Aprendizaje en terreno",
-    workshopDescription:
-      "El primer gran taller semanal de nuestro programa comunitario está planificado en torno a esta pasarela de pagos. Las sesiones estarán abiertas a visitantes, comerciantes locales y emprendedores que busquen orientación práctica — no solo teoría.",
-    workshopTopics: [
-      "Configuración de cuentas de comercio Stronghold sin comisiones",
-      "Cómo funciona Stronghold Pay junto a $JFISH en Jungle Fish",
-      "Introducción a los rieles financieros basados en Stellar en Costa Rica",
-      "Discusión sobre Real World Assets, contratos inteligentes y desarrollo sostenible",
-    ],
-    closingNote:
-      "La integración con Stronghold se está implementando en el santuario. Efectivo y tarjeta siguen disponibles durante la transición.",
   },
   volunteer: {
     eyebrow: "Únete al movimiento",

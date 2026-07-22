@@ -26,7 +26,8 @@ export type AboutCardConfig = {
   slug: AboutCardSlug;
   iconSrc: string;
   accent: AboutCardAccent;
-  cloudinaryId: CloudImageId;
+  cloudinaryId?: CloudImageId;
+  imageSrc?: string;
 };
 
 export const aboutCards: readonly AboutCardConfig[] = [
@@ -42,35 +43,35 @@ export const aboutCards: readonly AboutCardConfig[] = [
     slug: "aquaculture",
     iconSrc: "/icons/icon_fish.webp",
     accent: "lagoon",
-    cloudinaryId: CLOUD_IMAGE.aquaculture,
+    imageSrc: "/acuacultura.webp",
   },
   {
     key: "accommodation",
     slug: "accommodation",
     iconSrc: "/icons/icon_house.webp",
     accent: "earth",
-    cloudinaryId: CLOUD_IMAGE.accommodation,
+    imageSrc: "/hospedaje.webp",
   },
   {
     key: "book",
     slug: "book",
     iconSrc: "/icons/icon_bookleaf.webp",
     accent: "sand",
-    cloudinaryId: CLOUD_IMAGE.drawnLake,
+    imageSrc: "/libros.webp",
   },
   {
     key: "freshFood",
     slug: "fresh-food",
     iconSrc: "/icons/icon_humburger.webp",
     accent: "sand",
-    cloudinaryId: CLOUD_IMAGE.freshFood,
+    imageSrc: "/comida-fresca.webp",
   },
   {
     key: "education",
     slug: "education",
     iconSrc: "/icons/icon_mountain.webp",
     accent: "green",
-    cloudinaryId: CLOUD_IMAGE.education,
+    imageSrc: "/visitas-educativas.webp",
   },
 ] as const;
 

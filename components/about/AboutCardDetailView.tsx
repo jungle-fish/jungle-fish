@@ -54,18 +54,29 @@ export function AboutCardDetailView({ slug }: AboutCardDetailViewProps) {
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
         >
           <section className="relative min-h-[42vh] overflow-hidden sm:min-h-[48vh]">
-            <CldImage
-              src={card.cloudinaryId}
-              alt={copy.title}
-              fill
-              priority
-              crop="fill"
-              gravity="auto"
-              quality="auto"
-              format="auto"
-              sizes="100vw"
-              className="object-cover"
-            />
+            {card.imageSrc ? (
+              <Image
+                src={card.imageSrc}
+                alt={copy.title}
+                fill
+                priority
+                className="object-cover"
+                sizes="100vw"
+              />
+            ) : (
+              <CldImage
+                src={card.cloudinaryId!}
+                alt={copy.title}
+                fill
+                priority
+                crop="fill"
+                gravity="auto"
+                quality="auto"
+                format="auto"
+                sizes="100vw"
+                className="object-cover"
+              />
+            )}
             <div
               className={cn(
                 "absolute inset-0 bg-linear-to-t",

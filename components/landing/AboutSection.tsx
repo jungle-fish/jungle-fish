@@ -22,7 +22,7 @@ export function AboutSection() {
       decorations={<FallingLeaves />}
     >
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 [&>*]:h-full">
-        {aboutCards.map(({ key, slug, iconSrc, accent, cloudinaryId }, index) => {
+        {aboutCards.map(({ key, slug, iconSrc, accent, cloudinaryId, imageSrc }, index) => {
           const card = t.about.cards[key];
           return (
             <FadeIn key={key} delay={index * 0.08} className="h-full">
@@ -33,6 +33,7 @@ export function AboutSection() {
                 href={getAboutCardHref(slug)}
                 linkLabel={t.about.cardCta}
                 cloudinaryId={cloudinaryId}
+                imageSrc={imageSrc}
                 icon={
                   <Image
                     src={iconSrc}
