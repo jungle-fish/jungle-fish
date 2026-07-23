@@ -382,9 +382,22 @@ export function MtbSection() {
               <button
                 type="button"
                 onClick={() => setShowTokenInfo(!showTokenInfo)}
-                className="inline-flex w-full items-center justify-center rounded-2xl border border-white/20 bg-white/5 px-8 py-4 text-base font-bold text-white hover:bg-white/10 transition-all sm:w-auto cursor-pointer"
+                className="group inline-flex w-full items-center justify-center gap-2.5 rounded-2xl border border-white/20 bg-white/5 px-8 py-4 text-base font-bold text-white hover:bg-white/10 transition-all sm:w-auto cursor-pointer"
               >
-                {locale === "es" ? "Conoce más sobre JFISH token" : "Learn more about JFISH token"}
+                <span>{locale === "es" ? "Conoce más sobre JFISH token" : "Learn more about JFISH token"}</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className={cn(
+                    "h-5 w-5 transition-transform duration-350",
+                    showTokenInfo ? "rotate-180" : "group-hover:translate-y-1"
+                  )}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
               </button>
             </div>
           </div>
