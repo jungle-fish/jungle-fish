@@ -342,36 +342,41 @@ const en = {
     x: "X",
   },
   mtb: {
-    eyebrow: "Much More Than a Race!",
-    title: "Pedal, Win & Live the $JFISH Experience",
+    eyebrow: "Much more than a race!",
+    title: "An experience you ride and get rewarded for",
     description:
-      "Ready for the real Mountain Bike of the future? Here you don’t just come to give it your all on the trail; you come to be part of an ecosystem that rewards your effort from the very first second. By securing your spot, your registration becomes the engine of your weekend.",
-    benefitsTitle: "🔥 What your smart registration includes:",
+      "This isn't your typical sweat-fest. We've designed a course where your grit is noticed and rewarded right from the start. By signing up, you step into an interactive experience where you reclaim real value throughout the entire weekend.",
+    benefitsTitle: "📍 How it works step-by-step:",
     benefits: [
+      {
+        title: "Buy your ticket",
+        description:
+          "Secure your spot in the MTB event and claim your official kit. Your entire registration fee converts directly into spendable value for you.",
+      },
       {
         title: "Real Balance in Your Wallet ($JFISH)",
         description:
-          "When you buy your race ticket, you automatically receive a percentage of your registration in $JFISH tokens directly in your digital wallet. Money ready to use!",
+          "We credit 100% of your ticket's value back to you as $JFISH tokens in your digital wallet. Real money ready to be spent.",
       },
       {
-        title: "Ecosystem of Exclusive Discounts",
+        title: "Exclusive Discount Ecosystem",
         description:
-          "Use your tokens at the best allied eco-tourism hotels, restaurants, and shops in the area. Get up to 15% immediate discount or special cashbacks when paying with your phone.",
+          "Spend your tokens at Jungle Fish for meals in the restaurant, cabin stays, or tours. Get an automatic 20% discount on everything.",
       },
       {
-        title: "Dynamics and Gifts Along the Route",
+        title: "On-Route Challenges & Rewards",
         description:
-          "Want more tokens? Local businesses will give you more $JFISH just for visiting them, posting a story on Instagram, or leaving a 5-star Google Maps review. Your experience pays for itself!",
+          "During the race, local shops along the trail will reward you with more $JFISH just for checking in, taking photos, or supporting them. Your balance keeps growing as you ride!",
       },
       {
-        title: "Triple Tourism",
+        title: "Benefits for Family & Friends",
         description:
-          "Enjoy an event that unites extreme sport, the local natural environment, and the most advanced financial technology in Costa Rica.",
+          "Your companions can also use the digital wallet to buy food and drinks at a discount while they wait for you at the finish line.",
       },
     ],
-    urgencyTitle: "⚡ Don’t miss the starting line!",
+    urgencyTitle: "⚡ Spots are limited!",
     urgencyText:
-      "Spots are limited. Secure your kit, download your digital wallet, and get ready to ride the most technological and exciting circuit of the year.",
+      "Registration slots are filling fast. Secure your kit today, set up your digital wallet, and get ready to ride the most exciting and high-tech circuit of the year.",
     cta: "Secure My Spot & My Tokens",
   },
   mtbTransition: {

@@ -4,8 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
 
-const BENEFIT_ICONS = ["💰", "🏷️", "🎁", "🌿"];
-
 export function MtbSection() {
   const { t } = useLanguage();
 
@@ -42,29 +40,29 @@ export function MtbSection() {
             </p>
 
             {/* Benefits header */}
-            <p className="mb-6 text-base font-bold text-emerald-300">
+            <p className="mb-8 text-base font-bold text-emerald-300">
               {t.mtb.benefitsTitle}
             </p>
 
-            {/* Benefits list */}
-            <ul className="mb-10 space-y-5">
+            {/* Visual Timeline Flow */}
+            <div className="relative border-l border-emerald-500/20 ml-4 pl-8 mb-10 space-y-8">
               {t.mtb.benefits.map((benefit, i) => (
-                <li key={i} className="flex gap-4">
-                  {/* Icon badge */}
-                  <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/20 text-xl ring-1 ring-emerald-500/30">
-                    {BENEFIT_ICONS[i]}
-                  </span>
+                <div key={i} className="relative">
+                  {/* Glowing Step Badge */}
+                  <div className="absolute -left-[48px] top-0.5 flex h-8 w-8 items-center justify-center rounded-full border border-emerald-500/40 bg-gradient-to-b from-[#112411] to-[#0a120a] text-xs font-black text-emerald-400 shadow-md ring-4 ring-[#0f1a0e] transition-colors group-hover:border-emerald-400">
+                    {i + 1}
+                  </div>
                   <div>
-                    <p className="mb-1 font-semibold text-white">
+                    <h4 className="font-display text-base font-bold text-white sm:text-lg">
                       {benefit.title}
-                    </p>
-                    <p className="text-sm leading-relaxed text-slate-400">
+                    </h4>
+                    <p className="mt-1 text-sm leading-relaxed text-slate-400">
                       {benefit.description}
                     </p>
                   </div>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
 
             {/* Urgency box */}
             <div className="mb-8 rounded-2xl border border-amber-500/30 bg-amber-500/10 px-6 py-5">

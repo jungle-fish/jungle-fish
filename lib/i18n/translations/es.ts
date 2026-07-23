@@ -348,36 +348,41 @@ const es: TranslationDictionary = {
     x: "X",
   },
   mtb: {
-    eyebrow: "¡Mucho Más Que Una Carrera!",
-    title: "Pedalea, Gana y Vive la Experiencia $JFISH",
+    eyebrow: "¡Mucho más que una carrera!",
+    title: "Una experiencia que pedaleas y te premia",
     description:
-      "¿Listo para el verdadero Mountain Bike del futuro? Aquí no solo vienes a darlo todo en la pista; vienes a formar parte de un ecosistema que premia tu esfuerzo desde el primer segundo. Al asegurar tu campo, tu inscripción se convierte en el motor de tu fin de semana.",
-    benefitsTitle: "🔥 Lo que incluye tu inscripción inteligente:",
+      "Esta no es la típica competencia donde solo vienes a sudar. Diseñamos un recorrido donde tu esfuerzo se nota y se recompensa desde antes de la salida. Al inscribirte, entras a una dinámica interactiva donde recuperas valor real a lo largo de todo el fin de semana.",
+    benefitsTitle: "📍 Así funciona paso a paso:",
     benefits: [
+      {
+        title: "Compra tu entrada",
+        description:
+          "Adquieres tu entrada al evento de MTB y aseguras tu kit oficial. Todo tu pago se convierte en saldo directo para ti.",
+      },
       {
         title: "Saldo Real en tu Billetera ($JFISH)",
         description:
-          "Con la compra de tu ticket de carrera, recibes de forma automática un porcentaje de tu inscripción en tokens $JFISH directo en tu billetera digital. ¡Dinero listo para usar!",
+          "Te depositamos el 100% del valor de tu entrada en tokens $JFISH en tu billetera digital. Dinero real que tienes listo para usar.",
       },
       {
         title: "Ecosistema de Descuentos Exclusivos",
         description:
-          "Usa tus tokens en los mejores hoteles, restaurantes y comercios eco-turísticos aliados de la zona. Obtén hasta un 15% de descuento inmediato o cashbacks especiales al pagar con tu celular.",
+          "Usa tus tokens en Jungle Fish para comer en el restaurante, hospedarte en las cabañas o hacer recorridos. Recibes un 20% de descuento automático en todo.",
       },
       {
         title: "Dinámicas y Regalos en Ruta",
         description:
-          "¿Quieres más tokens? Los comercios locales te regalarán más $JFISH solo por visitarlos, subir una historia a Instagram o dejarles un review de 5 estrellas en Google Maps. ¡Tu experiencia se paga sola!",
+          "Durante la carrera, los comercios locales te regalarán más $JFISH por visitarlos, tomar fotos o apoyarlos. ¡Tu saldo sigue creciendo mientras pedaleas!",
       },
       {
-        title: "Turismo Triple",
+        title: "Beneficio para tus familiares y amigos",
         description:
-          "Disfruta de un evento que une el deporte rudo, la naturaleza de la zona y la tecnología financiera más avanzada de Costa Rica.",
+          "Ellos también pueden usar la billetera para comprar comida y bebidas con descuento mientras te esperan en la línea de meta.",
       },
     ],
-    urgencyTitle: "⚡ ¡No te quedes fuera de la línea de salida!",
+    urgencyTitle: "⚡ ¡El cupo es limitado!",
     urgencyText:
-      "Las inscripciones son limitadas. Asegura tu kit, descarga tu billetera digital y prepárate para pedalear en el circuito más tecnológico y emocionante del año.",
+      "Las inscripciones son limitadas. Asegura tu kit hoy mismo, configura tu billetera digital y prepárate para pedalear en el circuito más emocionante y tecnológico del año.",
     cta: "Asegurar Mi Campo y Mis Tokens",
   },
   mtbTransition: {
