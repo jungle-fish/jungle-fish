@@ -1,11 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
 
 export function MtbSection() {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
+  const [showPromo, setShowPromo] = useState(false);
 
   return (
     <section
@@ -60,6 +62,55 @@ export function MtbSection() {
                       {benefit.description}
                     </p>
                   </div>
+                  {i === 4 && (
+                    <div className="mt-4">
+                      <p className="text-xs font-semibold text-slate-300">
+                        {locale === "es" ? "¿Quieres ganar tus primeros JFISH?" : "Want to earn your first JFISH?"}
+                      </p>
+                      <button
+                        onClick={() => setShowPromo(!showPromo)}
+                        className="mt-2 inline-flex items-center gap-2 rounded-xl bg-amber-550/90 border border-amber-500/30 px-4 py-2 text-xs font-bold text-white shadow-md hover:bg-amber-500 hover:scale-[1.02] transition-all cursor-pointer"
+                      >
+                        🎁 {locale === "es" ? "100 JFISH Gratis" : "100 Free JFISH"}
+                      </button>
+                      {showPromo && (
+                        <div className="mt-4 p-5 rounded-2xl border border-dashed border-amber-500/30 bg-amber-500/5 space-y-4 max-w-lg">
+                          <ol className="list-decimal list-inside text-xs text-slate-300 space-y-2.5">
+                            <li>
+                              {locale === "es" 
+                                ? "Sube la siguiente imagen a tu Instagram, Facebook o TikTok:" 
+                                : "Upload the following image to your Instagram, Facebook, or TikTok:"
+                              }
+                              <div className="mt-2 pl-4">
+                                <a
+                                  href="/visitas-educativas.webp"
+                                  download="jfish_promo.webp"
+                                  className="inline-flex items-center gap-1.5 text-emerald-400 hover:underline"
+                                >
+                                  📥 {locale === "es" ? "Descargar Imagen Promocional" : "Download Promotional Image"}
+                                </a>
+                              </div>
+                            </li>
+                            <li>
+                              {locale === "es" ? "Etiqueta a @JungleFish." : "Tag @JungleFish."}
+                            </li>
+                            <li>
+                              {locale === "es" 
+                                ? "Mándanos el pantallazo y déjanos tu dirección de Lobster." 
+                                : "Send us the screenshot and leave your Lobster address."
+                              }
+                            </li>
+                            <li>
+                              {locale === "es" 
+                                ? "En unas horas recibirás tus JFISH listos para canjearlos por descuentos." 
+                                : "Within a few hours, you'll receive your JFISH ready to redeem for discounts."
+                              }
+                            </li>
+                          </ol>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -72,24 +123,34 @@ export function MtbSection() {
               </p>
             </div>
 
-            {/* CTA Button */}
-            <Link
-              href="/registro"
-              className="group inline-flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 px-8 py-4 text-base font-bold text-white shadow-lg shadow-emerald-500/25 transition-all duration-300 hover:from-emerald-400 hover:to-teal-400 hover:shadow-emerald-500/40 hover:scale-[1.02] sm:w-auto"
-            >
-              <span>👉</span>
-              {t.mtb.cta}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
+            {/* CTA Buttons */}
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+              <Link
+                href="/registro"
+                className="group inline-flex w-full items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 px-8 py-4 text-base font-bold text-white shadow-lg shadow-emerald-500/25 transition-all duration-300 hover:from-emerald-400 hover:to-teal-400 hover:shadow-emerald-500/40 hover:scale-[1.02] sm:w-auto"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
+                <span>👉</span>
+                {t.mtb.cta}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+              <Link
+                href="/token"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full items-center justify-center rounded-2xl border border-white/20 bg-white/5 px-8 py-4 text-base font-bold text-white hover:bg-white/10 transition-all sm:w-auto"
+              >
+                {locale === "es" ? "Conoce más sobre JFISH token" : "Learn more about JFISH token"}
+              </Link>
+            </div>
           </div>
 
           {/* RIGHT — Image + floating token icon */}

@@ -370,14 +370,14 @@ const es: TranslationDictionary = {
           "Usa tus tokens en Jungle Fish para comer en el restaurante, hospedarte en las cabañas o hacer recorridos. Recibes un 20% de descuento automático en todo.",
       },
       {
-        title: "Dinámicas y Regalos en Ruta",
+        title: "Dinámicas y Regalos en Ruta (Antes, Durante y Después)",
         description:
-          "Durante la carrera, los comercios locales te regalarán más $JFISH por visitarlos, tomar fotos o apoyarlos. ¡Tu saldo sigue creciendo mientras pedaleas!",
+          "Recibes beneficios antes del día del evento, ganas recompensas adicionales en ruta al apoyar comercios locales, y continúas usando tus tokens con descuento hasta por 6 meses después de la carrera.",
       },
       {
-        title: "Beneficio para tus familiares y amigos",
+        title: "Beneficios para todos (Amigos y Familiares)",
         description:
-          "Ellos también pueden usar la billetera para comprar comida y bebidas con descuento mientras te esperan en la línea de meta.",
+          "El ecosistema $JFISH no es solo para corredores. Es para todo el mundo: puedes transferir tokens, regalarlos o ganarlos a través de retos sencillos en redes sociales.",
       },
     ],
     urgencyTitle: "⚡ ¡El cupo es limitado!",

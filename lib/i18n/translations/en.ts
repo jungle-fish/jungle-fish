@@ -364,14 +364,14 @@ const en = {
           "Spend your tokens at Jungle Fish for meals in the restaurant, cabin stays, or tours. Get an automatic 20% discount on everything.",
       },
       {
-        title: "On-Route Challenges & Rewards",
+        title: "On-Route Challenges & Rewards (Before, During & After)",
         description:
-          "During the race, local shops along the trail will reward you with more $JFISH just for checking in, taking photos, or supporting them. Your balance keeps growing as you ride!",
+          "Enjoy benefits starting before the event, earn extra rewards on the trail by supporting local shops, and keep spending your tokens at a discount for up to 6 months after the race.",
       },
       {
-        title: "Benefits for Family & Friends",
+        title: "Benefits for Everyone (Friends & Family)",
         description:
-          "Your companions can also use the digital wallet to buy food and drinks at a discount while they wait for you at the finish line.",
+          "The $JFISH ecosystem is for everyone, not just racers. You can transfer tokens, gift them, or earn them through simple social media challenges.",
       },
     ],
     urgencyTitle: "⚡ Spots are limited!",
