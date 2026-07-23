@@ -5,10 +5,114 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+
+const flowData = {
+  es: {
+    before: {
+      competitor: {
+        steps: [
+          { text: "Recibes automáticamente tu saldo en $JFISH al pagar la entrada." },
+          { text: "Si quieres más tokens, puedes ir a las empresas patrocinadoras del evento." }
+        ]
+      },
+      attendees: {
+        steps: [
+          { text: "¡El token es para todos! Te enteras de la carrera y el token por las campañas del evento." },
+          { text: "Consigue tus primeros tokens gratis en redes sociales etiquetando a los patrocinadores." },
+          { text: "O gana tokens directo comprando productos específicos en tiendas aliadas." }
+        ]
+      }
+    },
+    during: {
+      competitor: {
+        steps: [
+          { text: "Usa tus tokens en los stands del santuario como cupones de descuento." },
+          { text: "Si te quedas sin tokens, puedes ir a stands patrocinadores que los regalen o te den por comprar un producto." },
+          { text: "Úsalos en este o en próximos eventos y en empresas patrocinadoras." }
+        ]
+      },
+      attendees: {
+        steps: [
+          { text: "Usa tus tokens en stands como cupones de descuento para consumir alimentos y bebidas." },
+          { text: "Si te quedas sin tokens, ve a los stands aliados que regalan $JFISH o que den tokens por la compra de artículos." },
+          { text: "Usa tu saldo durante el evento o guárdalo para futuros eventos y patrocinadores." }
+        ]
+      }
+    },
+    after: {
+      competitor: {
+        steps: [
+          { text: "Canjea tus tokens restantes por descuentos en locales y empresas patrocinadoras de la zona." },
+          { text: "Visita patrocinadores que regalen $JFISH o que den tokens con la compra de productos para seguir sumando saldo." },
+          { text: "Úsalos en próximos eventos o en empresas aliadas durante los siguientes 6 meses." }
+        ]
+      },
+      attendees: {
+        steps: [
+          { text: "Usa tu saldo como cupones de descuento en comercios y hoteles aliados de la región." },
+          { text: "Visita a las empresas patrocinadoras que regalen $JFISH o den tokens por compras para acumular más." },
+          { text: "Úsalos en tus visitas habituales o guárdalos para la carrera del próximo año." }
+        ]
+      }
+    }
+  },
+  en: {
+    before: {
+      competitor: {
+        steps: [
+          { text: "Automatically receive your $JFISH token balance when paying your race entry." },
+          { text: "If you want more tokens, you can visit the sponsoring companies of the event." }
+        ]
+      },
+      attendees: {
+        steps: [
+          { text: "The token is for everyone! Learn about the race and the token through our event campaigns." },
+          { text: "Get your first tokens free on social media by tagging our official sponsors." },
+          { text: "Or earn tokens directly by purchasing specific products at allied shops." }
+        ]
+      }
+    },
+    during: {
+      competitor: {
+        steps: [
+          { text: "Use your tokens at sanctuary stands as discount coupons." },
+          { text: "If you run out of tokens, visit sponsor stands that gift them or give them for purchasing a product." },
+          { text: "Spend them during this or future events and with sponsoring companies." }
+        ]
+      },
+      attendees: {
+        steps: [
+          { text: "Use your tokens at the stands as discount coupons for food and beverages." },
+          { text: "If you run out, go to allied stands that gift $JFISH or give tokens for product purchases." },
+          { text: "Use your balance during the event or save it for future events and sponsors." }
+        ]
+      }
+    },
+    after: {
+      competitor: {
+        steps: [
+          { text: "Redeem your remaining tokens for discounts at local shops and sponsoring companies in the area." },
+          { text: "Visit sponsors that gift $JFISH or give tokens with product purchases to keep adding balance." },
+          { text: "Use them in future events or allied businesses for the next 6 months." }
+        ]
+      },
+      attendees: {
+        steps: [
+          { text: "Use your balance as discount coupons in local shops and allied hotels in the region." },
+          { text: "Visit sponsoring companies that gift $JFISH or give tokens for purchases to earn more." },
+          { text: "Use them on your regular visits or save them for next year's race." }
+        ]
+      }
+    }
+  }
+};
 
 export function MtbSection() {
   const { t, locale } = useLanguage();
   const [showPromo, setShowPromo] = useState(false);
+  const [showTokenInfo, setShowTokenInfo] = useState(false);
+  const [activeTab, setActiveTab] = useState<"before" | "during" | "after">("before");
   const [walletAddress, setWalletAddress] = useState("");
   const [screenshotFile, setScreenshotFile] = useState<File | null>(null);
   const [isSaved, setIsSaved] = useState(false);
@@ -275,14 +379,13 @@ export function MtbSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
-              <Link
-                href="/token"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex w-full items-center justify-center rounded-2xl border border-white/20 bg-white/5 px-8 py-4 text-base font-bold text-white hover:bg-white/10 transition-all sm:w-auto"
+              <button
+                type="button"
+                onClick={() => setShowTokenInfo(!showTokenInfo)}
+                className="inline-flex w-full items-center justify-center rounded-2xl border border-white/20 bg-white/5 px-8 py-4 text-base font-bold text-white hover:bg-white/10 transition-all sm:w-auto cursor-pointer"
               >
                 {locale === "es" ? "Conoce más sobre JFISH token" : "Learn more about JFISH token"}
-              </Link>
+              </button>
             </div>
           </div>
 
@@ -323,6 +426,113 @@ export function MtbSection() {
             </div>
           </div>
         </div>
+
+        {/* Collapsible Token Flow Dashboard */}
+        {showTokenInfo && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="mt-16 rounded-3xl border border-emerald-500/20 bg-black/40 p-6 sm:p-10 backdrop-blur-md shadow-2xl"
+          >
+            {/* Header */}
+            <div className="text-center max-w-2xl mx-auto mb-10">
+              <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xl font-black mb-3">
+                $
+              </span>
+              <h3 className="font-display text-2xl font-extrabold text-white sm:text-3xl">
+                {locale === "es" ? "Ciclo de Valor del Token $JFISH" : "$JFISH Token Value Cycle"}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-400">
+                {locale === "es"
+                  ? "Entiende cómo fluye y se multiplica el valor de tu saldo en cada etapa de la carrera"
+                  : "Understand how your token balance flows and multiplies at each stage of the race"}
+              </p>
+            </div>
+
+            {/* Steps Selector (Before / During / After) */}
+            <div className="flex border-b border-white/5 mb-10 pb-px overflow-x-auto justify-start md:justify-center gap-2 scrollbar-none">
+              {(["before", "during", "after"] as const).map((tab) => (
+                <button
+                  key={tab}
+                  type="button"
+                  onClick={() => setActiveTab(tab)}
+                  className={cn(
+                    "px-6 py-4 text-sm font-bold border-b-2 transition-all whitespace-nowrap cursor-pointer",
+                    activeTab === tab
+                      ? "border-emerald-400 text-emerald-400"
+                      : "border-transparent text-slate-450 hover:text-white"
+                  )}
+                >
+                  {tab === "before" && (locale === "es" ? "1. Antes del Evento" : "1. Before the Event")}
+                  {tab === "during" && (locale === "es" ? "2. Durante el Evento" : "2. During the Event")}
+                  {tab === "after" && (locale === "es" ? "3. Después del Evento (Hasta 6 meses)" : "3. After the Event (Up to 6 months)")}
+                </button>
+              ))}
+            </div>
+
+            {/* Dynamic Comparison Cards */}
+            <div className="grid gap-8 lg:grid-cols-2">
+              {/* Competitors Flow */}
+              <div className="rounded-2xl border border-white/5 bg-[#0e170e]/80 p-6 sm:p-8 space-y-6 shadow-lg shadow-[#060c06]/50">
+                <div className="flex items-center justify-between border-b border-emerald-500/10 pb-4">
+                  <h4 className="font-display text-lg font-bold text-emerald-400 flex items-center gap-2.5">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-400 text-base">
+                      🚴
+                    </span>
+                    {locale === "es" ? "Competidores" : "Competitors"}
+                  </h4>
+                  <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-400 border border-emerald-500/25">
+                    {locale === "es" ? "Inscritos" : "Registered"}
+                  </span>
+                </div>
+
+                <div className="space-y-6 relative pl-4 border-l border-emerald-500/10 ml-2">
+                  {(locale === "es" ? flowData.es[activeTab].competitor.steps : flowData.en[activeTab].competitor.steps).map((step, idx) => (
+                    <div key={idx} className="relative">
+                      {/* Node circle on the vertical left line */}
+                      <span className="absolute -left-[29px] top-1 flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500 text-[8px] font-bold text-white shadow-sm ring-4 ring-[#0e170e]">
+                        {idx + 1}
+                      </span>
+                      <p className="text-sm leading-relaxed text-slate-300">
+                        {step.text}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Attendees Flow */}
+              <div className="rounded-2xl border border-white/5 bg-[#17140e]/80 p-6 sm:p-8 space-y-6 shadow-lg shadow-[#0c0a06]/50">
+                <div className="flex items-center justify-between border-b border-amber-500/10 pb-4">
+                  <h4 className="font-display text-lg font-bold text-amber-400 flex items-center gap-2.5">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500/10 text-amber-400 text-base">
+                      👥
+                    </span>
+                    {locale === "es" ? "Asistentes y Familiares" : "Spectators & Family"}
+                  </h4>
+                  <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-md bg-amber-500/15 text-amber-400 border border-amber-500/25">
+                    {locale === "es" ? "Público General" : "General Public"}
+                  </span>
+                </div>
+
+                <div className="space-y-6 relative pl-4 border-l border-amber-500/10 ml-2">
+                  {(locale === "es" ? flowData.es[activeTab].attendees.steps : flowData.en[activeTab].attendees.steps).map((step, idx) => (
+                    <div key={idx} className="relative">
+                      {/* Node circle on the vertical left line */}
+                      <span className="absolute -left-[29px] top-1 flex h-4 w-4 items-center justify-center rounded-full bg-amber-400 text-[8px] font-bold text-[#17140e] shadow-sm ring-4 ring-[#17140e]">
+                        {idx + 1}
+                      </span>
+                      <p className="text-sm leading-relaxed text-slate-300">
+                        {step.text}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
       </div>
     </section>
   );
