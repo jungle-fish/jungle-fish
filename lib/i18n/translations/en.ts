@@ -345,7 +345,7 @@ const en = {
     eyebrow: "Much more than a race!",
     title: "An experience you ride and get rewarded for",
     description:
-      "This isn't your typical sweat-fest. We've designed a course where your grit is noticed and rewarded right from the start. By signing up, you step into an interactive experience where you reclaim real value throughout the entire weekend.",
+      "This isn't your typical sweat-fest. We've designed a course where your grit is noticed and rewarded right from the start. By signing up, you step into an interactive experience where you reclaim real value starting before the race and extending for more than 6 months after the event.",
     benefitsTitle: "📍 How it works step-by-step:",
     benefits: [
       {
@@ -361,7 +361,7 @@ const en = {
       {
         title: "Exclusive Discount Ecosystem",
         description:
-          "Spend your tokens at Jungle Fish for meals in the restaurant, cabin stays, or tours. Get an automatic 20% discount on everything.",
+          "Spend your tokens at Jungle Fish for meals in the restaurant, cabin stays, or tours. Redeem your tokens for special benefits and discounts across all of our services.",
       },
       {
         title: "On-Route Challenges & Rewards (Before, During & After)",

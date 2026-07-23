@@ -351,7 +351,7 @@ const es: TranslationDictionary = {
     eyebrow: "¡Mucho más que una carrera!",
     title: "Una experiencia que pedaleas y te premia",
     description:
-      "Esta no es la típica competencia donde solo vienes a sudar. Diseñamos un recorrido donde tu esfuerzo se nota y se recompensa desde antes de la salida. Al inscribirte, entras a una dinámica interactiva donde recuperas valor real a lo largo de todo el fin de semana.",
+      "Esta no es la típica competencia donde solo vienes a sudar. Diseñamos un recorrido donde tu esfuerzo se nota y se recompensa desde antes de la salida. Al inscribirte, entras a una dinámica interactiva donde recuperas valor real desde antes de la carrera y por más de 6 meses después del evento.",
     benefitsTitle: "📍 Así funciona paso a paso:",
     benefits: [
       {
@@ -367,7 +367,7 @@ const es: TranslationDictionary = {
       {
         title: "Ecosistema de Descuentos Exclusivos",
         description:
-          "Usa tus tokens en Jungle Fish para comer en el restaurante, hospedarte en las cabañas o hacer recorridos. Recibes un 20% de descuento automático en todo.",
+          "Usa tus tokens en Jungle Fish para comer en el restaurante, hospedarte en las cabañas o realizar recorridos. Canjea tus tokens por beneficios y descuentos especiales en todos nuestros servicios.",
       },
       {
         title: "Dinámicas y Regalos en Ruta (Antes, Durante y Después)",

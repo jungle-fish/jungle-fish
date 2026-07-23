@@ -4,10 +4,48 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n/LanguageProvider";
+import { cn } from "@/lib/utils";
 
 export function MtbSection() {
   const { t, locale } = useLanguage();
   const [showPromo, setShowPromo] = useState(false);
+  const [walletAddress, setWalletAddress] = useState("");
+  const [screenshotFile, setScreenshotFile] = useState<File | null>(null);
+  const [isSaved, setIsSaved] = useState(false);
+  const [dragActive, setDragActive] = useState(false);
+
+  const handleDrag = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === "dragenter" || e.type === "dragover") {
+      setDragActive(true);
+    } else if (e.type === "dragleave") {
+      setDragActive(false);
+    }
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+      setScreenshotFile(e.dataTransfer.files[0]);
+    }
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setScreenshotFile(e.target.files[0]);
+    }
+  };
+
+  const handleSave = () => {
+    if (!walletAddress || !screenshotFile) {
+      alert(locale === "es" ? "Por favor completa todos los campos (imagen y dirección de billetera)" : "Please complete all fields (image and wallet address)");
+      return;
+    }
+    setIsSaved(true);
+  };
 
   return (
     <section
@@ -75,38 +113,133 @@ export function MtbSection() {
                       </button>
                       {showPromo && (
                         <div className="mt-4 p-5 rounded-2xl border border-dashed border-amber-500/30 bg-amber-500/5 space-y-4 max-w-lg">
-                          <ol className="list-decimal list-inside text-xs text-slate-300 space-y-2.5">
-                            <li>
-                              {locale === "es" 
-                                ? "Sube la siguiente imagen a tu Instagram, Facebook o TikTok:" 
-                                : "Upload the following image to your Instagram, Facebook, or TikTok:"
-                              }
-                              <div className="mt-2 pl-4">
-                                <a
-                                  href="/visitas-educativas.webp"
-                                  download="jfish_promo.webp"
-                                  className="inline-flex items-center gap-1.5 text-emerald-400 hover:underline"
+                          {isSaved ? (
+                            <div className="text-center py-4 space-y-2">
+                              <span className="text-3xl">🎉</span>
+                              <h5 className="font-bold text-emerald-400">
+                                {locale === "es" ? "¡Guardado con éxito!" : "Saved successfully!"}
+                              </h5>
+                              <p className="text-xs text-slate-300">
+                                {locale === "es" 
+                                  ? "Validaremos tu participación y en unas horas recibirás tus 100 $JFISH." 
+                                  : "We will validate your participation and send your 100 $JFISH within a few hours."
+                                }
+                              </p>
+                              <button
+                                onClick={() => {
+                                  setIsSaved(false);
+                                  setWalletAddress("");
+                                  setScreenshotFile(null);
+                                }}
+                                className="mt-4 inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-white underline cursor-pointer"
+                              >
+                                {locale === "es" ? "Enviar otro" : "Submit another"}
+                              </button>
+                            </div>
+                          ) : (
+                            <ol className="list-decimal list-inside text-xs text-slate-300 space-y-3.5">
+                              <li>
+                                {locale === "es" 
+                                  ? "Sube la siguiente imagen a tu Instagram, Facebook o TikTok:" 
+                                  : "Upload the following image to your Instagram, Facebook, or TikTok:"
+                                }
+                                <div className="mt-2 pl-4">
+                                  <a
+                                    href="/visitas-educativas.webp"
+                                    download="jfish_promo.webp"
+                                    className="inline-flex items-center gap-1.5 text-emerald-400 hover:underline font-bold"
+                                  >
+                                    📥 {locale === "es" ? "Descargar Imagen Promocional" : "Download Promotional Image"}
+                                  </a>
+                                </div>
+                              </li>
+                              <li>
+                                {locale === "es" ? "Etiqueta a @JungleFish." : "Tag @JungleFish."}
+                              </li>
+                              <li className="space-y-3">
+                                <span>
+                                  {locale === "es" 
+                                    ? "Mándanos el pantallazo y déjanos tu dirección de Lobster:" 
+                                    : "Send us the screenshot and leave your Lobster address:"
+                                  }
+                                </span>
+
+                                {/* Drag & Drop Area */}
+                                <div className="mt-2">
+                                  <div
+                                    onDragEnter={handleDrag}
+                                    onDragOver={handleDrag}
+                                    onDragLeave={handleDrag}
+                                    onDrop={handleDrop}
+                                    className={cn(
+                                      "relative flex flex-col items-center justify-center p-6 rounded-xl border-2 border-dashed transition-all",
+                                      dragActive ? "border-emerald-400 bg-emerald-500/10" : "border-white/10 hover:border-white/20 bg-black/20",
+                                      screenshotFile ? "border-emerald-500/50 bg-emerald-500/5" : ""
+                                    )}
+                                  >
+                                    <input
+                                      type="file"
+                                      accept="image/*"
+                                      onChange={handleFileChange}
+                                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                                      id="file-upload"
+                                    />
+                                    {screenshotFile ? (
+                                      <div className="text-center pointer-events-none">
+                                        <span className="text-xl">📸</span>
+                                        <p className="text-xs text-emerald-400 font-semibold mt-1 max-w-[250px] truncate">
+                                          {screenshotFile.name}
+                                        </p>
+                                        <p className="text-[10px] text-slate-500">
+                                          {(screenshotFile.size / 1024).toFixed(1)} KB
+                                        </p>
+                                      </div>
+                                    ) : (
+                                      <div className="text-center pointer-events-none">
+                                        <span className="text-xl">📤</span>
+                                        <p className="text-xs text-slate-300 font-medium mt-1">
+                                          {locale === "es" ? "Arrastra tu captura aquí" : "Drag your screenshot here"}
+                                        </p>
+                                        <p className="text-[10px] text-slate-500 mt-0.5">
+                                          {locale === "es" ? "o haz clic para explorar" : "or click to browse"}
+                                        </p>
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+
+                                {/* Stellar Address Input */}
+                                <div className="space-y-1">
+                                  <label htmlFor="wallet-address" className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">
+                                    {locale === "es" ? "Dirección Pública Stellar" : "Stellar Public Address"}
+                                  </label>
+                                  <input
+                                    type="text"
+                                    id="wallet-address"
+                                    value={walletAddress}
+                                    onChange={(e) => setWalletAddress(e.target.value)}
+                                    placeholder={locale === "es" ? "Dirección de Lobster (G...)" : "Lobster Address (G...)"}
+                                    className="w-full rounded-xl border border-white/10 bg-black/30 px-3 py-2 text-xs text-white placeholder-slate-600 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 focus:outline-hidden"
+                                  />
+                                </div>
+
+                                {/* Save Submit Button */}
+                                <button
+                                  type="button"
+                                  onClick={handleSave}
+                                  className="w-full inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 px-4 py-2.5 text-xs font-bold text-white shadow-md hover:from-emerald-400 hover:to-teal-400 transition-all cursor-pointer"
                                 >
-                                  📥 {locale === "es" ? "Descargar Imagen Promocional" : "Download Promotional Image"}
-                                </a>
-                              </div>
-                            </li>
-                            <li>
-                              {locale === "es" ? "Etiqueta a @JungleFish." : "Tag @JungleFish."}
-                            </li>
-                            <li>
-                              {locale === "es" 
-                                ? "Mándanos el pantallazo y déjanos tu dirección de Lobster." 
-                                : "Send us the screenshot and leave your Lobster address."
-                              }
-                            </li>
-                            <li>
-                              {locale === "es" 
-                                ? "En unas horas recibirás tus JFISH listos para canjearlos por descuentos." 
-                                : "Within a few hours, you'll receive your JFISH ready to redeem for discounts."
-                              }
-                            </li>
-                          </ol>
+                                  💾 {locale === "es" ? "Guardar" : "Save"}
+                                </button>
+                              </li>
+                              <li>
+                                {locale === "es" 
+                                  ? "En unas horas recibirás tus JFISH listos para canjearlos por descuentos." 
+                                  : "Within a few hours, you'll receive your JFISH ready to redeem for discounts."
+                                }
+                              </li>
+                            </ol>
+                          )}
                         </div>
                       )}
                     </div>
